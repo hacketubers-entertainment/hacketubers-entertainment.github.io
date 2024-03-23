@@ -2,9 +2,46 @@
 <html>
 <head>
     <style>
+body{
+    background-color: #292830;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.container div {
+  flex: 25%;
+  box-sizing: border-box;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.container img {
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Asegura que la imagen se adapte al contenedor sin cortarse ni deformarse */
+  aspect-ratio: 1 / 1; /* Hace que el contenedor sea cuadrado */
+}
+
+.container div {
+  border: 1px solid #ffffff; /* Agrega un margen delgado alrededor de cada imagen */
+}
+h2{
+    color: #ffffff;
+}
     </style>
 </head>
 <body>
-    <p>hola garly</p>
+    <h2>Manten presionado para descargar</h2>
+    <div class="container">
+        <div><img src="imagen.png" alt="Imagen 1"></div>
+        <div><img src="imagen.png" alt="Imagen 2"></div>
+        <div><img src="imagen.png" alt="Imagen 3"></div>
+        <div><img src="imagen.png" alt="Imagen 4"></div>
+        <!-- Agrega más imágenes según sea necesario -->
+    </div>
+   
 </body>
 </html>
