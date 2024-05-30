@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Leer datos de Google Sheets</title>
+  <script src="https://apis.google.com/js/api.js"></script>
+</head>
+<body>
+  <script>
+    // Reemplaza con la ID de tu hoja de cálculo de Google Sheets
+    const spreadsheetId = '2PACX-1vRabJaWtJ0B5F3taklYrAEa40LG_23USozJxJKasdJvNwCkh1GSBMa8wruKBAF3Rdt9Av-qUHM5sAn9';
+
+    // Reemplaza con el rango de celdas que deseas leer
+    const range = 'A1:B10'; // Ejemplo: lee de A1 a B10
+
+    // Reemplaza con tu API Key de Google Sheets
+    const apiKey = 'AIzaSyCaBYWA6b_XMNE3suLKq9AqdcQgLNBhoRo';
+
+    function leerDatos() {
+      gapi.client.init({
+        apiKey: apiKey,
+        discoveryUrl: 'https://www.googleapis.com/discovery/v1/apis/sheets/v4'
+      }).then(() => {
+        const url = `https://spreadsheets.google.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
+
+        const request = gapi.client.request({
+          url: url,
+          method: 'GET'
+        });
+
+        request.execute(response => {
+          if (response.error) {
+            console.error('Error al leer datos:', response.error);
+            return;
+          }
+
+          const valores = response.result.values;
+          const html = '';
+
+          // Procesar y mostrar los datos en el contenedor HTML
+          for (let fila of valores) {
+            html += '<tr>';
+            for (let dato of fila) {
+              html += `<td>${dato}</td>`;
+            }
+            html += '</tr>';
+          }
+
+          $('#contenedor-datos').html('<table>' + html + '</table>');
+        });
+      });
+    }
+
+    // Leer datos al cargar la página
+    leerDatos();
+  </script>
+  <h1>Datos de Google Sheets</h1>
+  <div id="contenedor-datos"></div>
+</body>
+</html>
