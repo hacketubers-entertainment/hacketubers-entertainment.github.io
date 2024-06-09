@@ -1,0 +1,18 @@
+header{
+    position: sticky;
+    top: 5px;
+    display: flex;
+    background-color: rgb(255, 255, 255);
+}
+h1{
+    margin-right: 20px;
+    color: rgb(94, 0, 182);
+}
+.apartados{
+    background-color: rgb(255, 255, 255);
+    width: flex;
+    float: left;
+    margin-right: 5px;
+    margin-left: 5px ;
+    margin-top: 20px;
+}
