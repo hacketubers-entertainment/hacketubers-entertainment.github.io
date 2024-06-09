@@ -16,3 +16,31 @@ h1{
     margin-left: 5px ;
     margin-top: 20px;
 }
+.imagen-principal{
+    width: 100%;
+}
+.contenedor-imagen-principal{
+    position: relative;
+}
+.contenido-informacion{
+    position: absolute;
+    top: 25%;
+    left: 10%;
+    color: aliceblue;
+    background-color: rgba(0, 0, 0, 0.288);
+    border-radius: 10px;
+    padding: 30px;
+}
+.logotipoHE{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+.ver-mas{
+    background-color: transparent;
+    color: white;
+    border: 1px;
+    border-color: white;
+    border-style: solid;
+    padding: 15px;
+}
