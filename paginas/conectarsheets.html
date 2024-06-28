@@ -126,8 +126,8 @@
       try {
         // Fetch first 10 files
         response = await gapi.client.sheets.spreadsheets.values.get({
-          spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
-          range: 'Class Data!A2:E',
+          spreadsheetId: '13unqpHHNxFMpwP79XWMQbcRA5NKgT3_4qaiMINh8wc4',
+          range: 'Class Data!A1:E',
         });
       } catch (err) {
         document.getElementById('content').innerText = err.message;
