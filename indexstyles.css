@@ -10,7 +10,6 @@ h1{
 }
 .apartados{
     background-color: rgb(255, 255, 255);
-    width: flex;
     float: left;
     margin-right: 5px;
     margin-left: 5px ;
@@ -44,3 +43,17 @@ h1{
     border-style: solid;
     padding: 15px;
 }
+@media only screen and (min-width:0px) and (max-width:853px){
+    .apartados{
+        font-size: 0px;
+    }
+  }
+
+@media only screen and (min-width:854px) and (max-width:1035px){
+    h1{
+        font-size: 24px;
+    }
+    .apartados{
+        font-size: 14px;
+    }
+  }
