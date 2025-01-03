@@ -6,7 +6,6 @@ header{
     background-color: rgb(255, 255, 255);
 }
 h1{
-    margin-right: 20px;
     color: rgb(94, 0, 182);
 }
 .apartados{
@@ -54,18 +53,19 @@ h1{
 }
 @media only screen and (min-width:0px) and (max-width:853px){
     .apartados{
-        cursor: pointer;
+        cursor: crosshair;
         font-size: 0px;
     }
   }
 
 @media only screen and (min-width:854px) and (max-width:1035px){
     h1{
+        
         font-size: 24px;
         margin-right: 0px;
     }
     .apartados{
         cursor: pointer;
-        font-size: 14px;
+        font-size: 0px;
     }
   }
