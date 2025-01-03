@@ -1,6 +1,7 @@
 header{
-    position: sticky;
-    top: 5px;
+    z-index: 10;
+    width: 100%;
+    position: fixed;
     display: flex;
     background-color: rgb(255, 255, 255);
 }
@@ -9,11 +10,18 @@ h1{
     color: rgb(94, 0, 182);
 }
 .apartados{
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
     background-color: rgb(255, 255, 255);
     float: left;
     margin-right: 5px;
     margin-left: 5px ;
     margin-top: 20px;
+}
+.apartados:hover{
+    background-color: rgba(0, 0, 0, 0.123);
+    border: 1px solid black;
 }
 .imagen-principal{
     width: 100%;
@@ -42,9 +50,11 @@ h1{
     border-color: white;
     border-style: solid;
     padding: 15px;
+    cursor: pointer;
 }
 @media only screen and (min-width:0px) and (max-width:853px){
     .apartados{
+        cursor: pointer;
         font-size: 0px;
     }
   }
@@ -52,8 +62,10 @@ h1{
 @media only screen and (min-width:854px) and (max-width:1035px){
     h1{
         font-size: 24px;
+        margin-right: 0px;
     }
     .apartados{
+        cursor: pointer;
         font-size: 14px;
     }
   }
