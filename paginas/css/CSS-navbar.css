@@ -31,17 +31,17 @@ h1{
         font-size: 0px;
     }
     h1{
-        font-size: 34px;
+        font-size: 24px;
     }
   }
 
 @media only screen and (min-width:854px) and (max-width:1035px){
     h1{
-        font-size: 24px;
+        font-size: 44px;
         margin-right: 0px;
     }
     .apartados{
         cursor: pointer;
         font-size: 0px;
     }
-  }
+}
