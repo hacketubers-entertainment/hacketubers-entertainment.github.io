@@ -1,0 +1,10 @@
+#cont_juegos{
+    display: flex;
+}
+.juego{
+    background-image: url("https://play-lh.googleusercontent.com/TBMXmohso9ozUZTZNdyMZo5B8yXsI9jITDdNBteCEyJrw0ZlOwWGzUsYrKdRkX7pQtM=s48-rw");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 30%;
+    height: 500px;
+}
