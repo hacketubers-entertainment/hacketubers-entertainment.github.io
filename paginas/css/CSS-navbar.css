@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'montserrat';
+    src: url('../fonts/Montserrat/Montserrat-VariableFont_wght.ttf');
+  }
+  @font-face {
+    font-family: 'sigmar';
+    src: url('../fonts/Sigmar/Sigmar-Regular.ttf');
+  }
 header{
     z-index: 10;
     width: 100%;
@@ -7,6 +15,7 @@ header{
     background-color: rgb(255, 255, 255);
 }
 h1{
+    font-family: 'sigmar';
     color: rgb(94, 0, 182);
 }
 
@@ -17,7 +26,7 @@ h1{
     background-color: rgb(255, 255, 255);
     float: left;
     margin-right: 5px;
-    margin-left: 5px ;
+    margin-left: 0px ;
     margin-top: 20px;
     text-decoration: none;
 }
