@@ -6,9 +6,11 @@
     <link rel="shortcut icon" type="image/x-icon" href="https://genfavicon.com/tmp/icon_ca7a0a5637dc1b274fda20a6799a5e1c.ico">
     <link rel="stylesheet" href="indexstyles.css">
     <link rel="stylesheet" href="paginas/css/CSS-navbar.css">
+    <link rel="stylesheet" href="paginas/css/css-menu.css">
   </head>
   <body>
     <header>
+      
       <div>
         <h1>Hacketubers Entertainment</h1>
       </div>
@@ -20,7 +22,9 @@
         <a class="apartados"><p>Arte</p></a>
         <a class="apartados"><p>colaboradores</p></a>
         <a class="apartados"><p>proyectos</p></a>
+        
       </div>
+      <label class="btn_menu" class="apartados" for="btn-menu"><img src="paginas/imagenes/menu-01-stroke-rounded.svg" alt=""></label>
     </header>
     <div class="contenedor-imagen-principal">
       <img class="imagen-principal" src="imagenes/pvz3-page-bg-generic-purple-xl.jpg.adapt.320w.jpg" alt="">
@@ -42,6 +46,21 @@
       <p>"Hola, Hacketubers Entertainment es un equipo de desarrollo de aplicaciones y videojuegos, principalmente para Android. También creamos diferentes tipos de contenido."</p>
     </div>
   </body>
+  <input type="checkbox" id="btn-menu" />
+  <div class="container-menu">
+    <div class="cont-menu">
+      <nav>
+        <a href="#">juegos</a>
+        <a href="#">aplicaciones</a>
+        <a href="#">Sitios web</a>
+        <a href="#">Animaciones</a>
+        <a href="#">arte</a>
+        <a href="#">colaboradores</a>
+        <a href="#">proyectos</a>
+      </nav>
+      <label for="btn-menu">✖️</label>
+    </div>
+  </div>
   <script>
     function ver_mas(){
       window.location.href = "#yo";
