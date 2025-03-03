@@ -51,7 +51,7 @@ body{
     padding: 10px;
     box-shadow: 15px 16px 12px 0px #878787;
     border-radius: 10px;
-    background: linear-gradient(0deg, #f0e5ff 0%, #ffffff 100%);
+    background-color: white;
     animation: 1s;
 }
 .cont_redes a:hover{
@@ -59,7 +59,7 @@ body{
     padding: 10px;
     box-shadow: 10px 10px 8px 0px #878787;
     border-radius: 10px;
-    background: linear-gradient(0deg, #f0e5ff 0%, #ffffff 100%);
+    background-color: white;
 }
 
 .yo{
@@ -68,7 +68,7 @@ body{
     padding: 10px;
     box-shadow: 13px 13px 12px 0px #878787;
     border-radius: 10px;
-    background: linear-gradient(0deg, #f0e5ff 0%, #ffffff 100%);
+    background: white;
 }
 @media only screen and (min-width:854px) and (max-width:1035px){
     .cont_redes{
