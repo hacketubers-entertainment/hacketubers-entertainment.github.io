@@ -83,7 +83,6 @@ body{
         padding-top: 50px;
         box-shadow: 15px 16px 12px 0px #878787;
         border-radius: 20px;
-        background: linear-gradient(0deg, #f0e5ff 0%, #ffffff 100%);
         animation: 1s;
         flex: 0 0 30%;
         box-sizing: border-box;
@@ -130,7 +129,6 @@ body{
         padding: 20px;
         box-shadow: 13px 13px 12px 0px #878787;
         border-radius: 20px;
-        background: linear-gradient(0deg, #f0e5ff 0%, #ffffff 100%);
     }
 }
 @media screen and (max-width:767px){
