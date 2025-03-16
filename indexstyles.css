@@ -8,6 +8,7 @@
   }
 body{
     font-family: 'montserrat';
+    background-color: rgb(236, 229, 247);
 }
 .imagen-principal{
     width: 100%;
@@ -49,7 +50,7 @@ body{
 }
 .cont_redes a{
     padding: 10px;
-    box-shadow: 15px 16px 12px 0px #878787;
+    box-shadow: 10px 11px 8px 0px #878787;
     border-radius: 10px;
     background-color: white;
     animation: 1s;
@@ -57,18 +58,40 @@ body{
 .cont_redes a:hover{
     transform: translate(5px, 5px);
     padding: 10px;
-    box-shadow: 10px 10px 8px 0px #878787;
+    box-shadow: 5px 6px 4px 0px #878787;
     border-radius: 10px;
     background-color: white;
 }
-
+.subtitulo{
+    margin-top: 40px;
+    margin-left: 50px;
+    font-family: "montserrat";
+}
+.Proyectos_container{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+.proyecto{
+    box-shadow: 0px 5px 9px 1px #6b6b6b;
+    width: 60%;
+    border-radius: 10px;
+    padding: 20px;
+}
+.proyecto img{
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 10px;
+}
 .yo{
     margin: 40px;
     font-size: 20px;
-    padding: 10px;
-    box-shadow: 13px 13px 12px 0px #878787;
+    padding: 20px 50px 20px 50px;
+    box-shadow: 0px 5px 9px 1px #6b6b6b;
     border-radius: 10px;
-    background: white;
+    background-color: white;
 }
 @media only screen and (min-width:854px) and (max-width:1035px){
     .cont_redes{
@@ -124,9 +147,10 @@ body{
         margin-left: 0px;
     }
     .yo{
+        background-color: white;
         margin: 40px;
         font-size: 24px;
-        padding: 20px;
+        padding: 20px 50px 20px 50px;
         box-shadow: 13px 13px 12px 0px #878787;
         border-radius: 20px;
     }
