@@ -17,7 +17,7 @@ body{
     box-shadow: 2px 5px 12px 0px #000000;
 }
 .contenedor-imagen-principal{
-    object-fit: cover;
+    overflow: hidden;
     position: relative;
 }
 .contenido-informacion{

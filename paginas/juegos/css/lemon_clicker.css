@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'milky_mania';
+    src: url('MilkyMania.ttf');
+}
+body{
+    background-image: url("../imagenes/fondo.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#cont_itulo_juego{
+    display: flex;
+}
+#titulo_juego{
+    font-family: 'milky_mania';
+    font-size: 15vh;
+    color: white;
+    text-align: center;
+    margin: 0px;
+    margin-top: 50px;
+    -webkit-text-stroke-width: 0.1px;
+    -webkit-text-stroke-color: black;
+}
+#img_info{
+    display: flex;
+}
+#imagen_principal{
+    width: 50%;
+}
+#cont_presentacion{
+    align-content: center;
+}
+#presentacion{
+    border-radius: 10px;
+    padding: 10px 5% 10px 5%;
+    background-color: rgba(0, 0, 0, 0.541);
+    font-size: 22px;
+    color: white;
+}
+@media only screen and (min-width:0px) and (max-width:1035px){
+    #img_info{
+        display: block;
+    }
+    #imagen_principal{
+        width: 100%;
+    }
+}

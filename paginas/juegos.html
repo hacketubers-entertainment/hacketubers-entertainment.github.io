@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juegos</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../imagenes/6 sin título_20241013023749.ico">
     <link rel="stylesheet" href="css/CSS-juegos.css">
     <link rel="stylesheet" href="css/CSS-navbar.css">
+    <link rel="stylesheet" href="css/css-menu.css">
 </head>
 <body>
     <header>
@@ -21,20 +23,37 @@
           <a class="apartados"><p>colaboradores</p></a>
           <a class="apartados"><p>proyectos</p></a>
         </div>
+        <label class="btn_menu" class="apartados" for="btn-menu"><img src="imagenes/menu-01-stroke-rounded.svg" alt=""></label>
       </header>
+
     <section id="cont_juegos">
-        <div class="juego">
+        <a class="juego" href="">
             <img class="imagen-juego" src="imagenes/un limon.png" alt="">
             <h2 class="titulo_juego">Un limon</h2>
-        </div>
-        <div class="juego">
+        </a>
+        <a class="juego" href="juegos/lemon_clicker.html">
             <img class="imagen-juego" src="imagenes/lemon clicker icon.png" alt="">
             <h2 class="titulo_juego">Un limon clicker</h2>
-        </div>
-        <div class="juego">
+        </a>
+        <a class="juego">
             <img class="imagen-juego" src="imagenes/un limon 2.png" alt="">
             <h2 class="titulo_juego">Un limon 2</h2>
-        </div>
+        </a>
     </section>
 </body>
+<input type="checkbox" id="btn-menu" />
+<div class="container-menu">
+  <div class="cont-menu">
+    <nav>
+      <a href="#">juegos</a>
+      <a href="#">aplicaciones</a>
+      <a href="#">Sitios web</a>
+      <a href="#">Animaciones</a>
+      <a href="#">arte</a>
+      <a href="#">colaboradores</a>
+      <a href="#">proyectos</a>
+    </nav>
+    <label for="btn-menu">✖️</label>
+  </div>
+</div>
 </html>
