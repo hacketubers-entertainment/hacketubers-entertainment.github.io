@@ -55,6 +55,8 @@ p{
     .apartados{
         cursor: crosshair;
         font-size: 0px;
+        padding-right: 0px;
+        padding-left: 0px;
     }
     h1{
         font-size: 24px;

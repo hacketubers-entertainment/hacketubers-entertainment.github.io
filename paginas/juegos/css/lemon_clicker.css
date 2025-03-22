@@ -2,7 +2,12 @@
     font-family: 'milky_mania';
     src: url('MilkyMania.ttf');
 }
+@font-face {
+    font-family: 'montserrat';
+    src: url('../fonts/Montserrat/Montserrat-VariableFont_wght.ttf');
+}
 body{
+    font-family: 'montserrat';
     background-image: url("../imagenes/fondo.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -38,7 +43,7 @@ body{
     font-size: 22px;
     color: white;
 }
-@media only screen and (min-width:0px) and (max-width:1035px){
+@media only screen and (min-width:0px) and (max-width:854px){
     #img_info{
         display: block;
     }
