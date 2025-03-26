@@ -4,7 +4,7 @@
 }
 @font-face {
     font-family: 'montserrat';
-    src: url('../fonts/Montserrat/Montserrat-VariableFont_wght.ttf');
+    src: url('../../fonts/Montserrat/Montserrat-VariableFont_wght.ttf');
 }
 body{
     font-family: 'montserrat';
@@ -31,6 +31,8 @@ body{
     display: flex;
 }
 #imagen_principal{
+    cursor: pointer;
+    filter: drop-shadow(2px 2px 5px #000000);
     width: 50%;
 }
 #cont_presentacion{
@@ -43,11 +45,32 @@ body{
     font-size: 22px;
     color: white;
 }
+#cont_capturas{
+    display: flex;
+    justify-content: space-around;
+}
+.imagen_vertical{
+    width: 30vw;
+    box-shadow: 0px 5px 9px 1px rgba(0, 0, 0, 0.507);
+    border-radius: 5px;
+}
+#cont_botones_descarga{
+    margin-top: 60px;
+    text-align: center;
+    font-size: large;
+    color: aliceblue;
+}
+#boton_playstore{
+    width: 50vw;
+}
 @media only screen and (min-width:0px) and (max-width:854px){
     #img_info{
         display: block;
     }
     #imagen_principal{
         width: 100%;
+    }
+    #boton_playstore{
+        width: 70vw;
     }
 }
