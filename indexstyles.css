@@ -26,6 +26,7 @@ body{
     left: 10%;
     color: aliceblue;
     background-color: rgba(0, 0, 0, 0.288);
+    backdrop-filter: blur(10px);
     border-radius: 10px;
     padding: 30px;
 }
