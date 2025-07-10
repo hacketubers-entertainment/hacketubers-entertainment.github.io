@@ -1,0 +1,31 @@
+---
+interface Props {
+  href: string;
+  img: string;
+}
+const { href, img } = Astro.props;
+---
+
+<a class="icon_social" href={href}>
+  <img src={img} alt="icono" srcset="" />
+</a>
+<style>
+  a {
+    padding: 10px;
+    border-radius: 10px;
+    animation: 3s;
+    border-radius: 25px;
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    box-shadow:
+      15px 15px 16px #999999,
+      -5px -5px 6px #ffffff;
+  }
+  a:hover {
+    transform: translate(5px, 5px);
+    padding: 10px;
+    background: #ffffff;
+    box-shadow:
+      inset 15px 15px 16px #999999,
+      inset -15px -15px 16px #ffffff;
+  }
+</style>

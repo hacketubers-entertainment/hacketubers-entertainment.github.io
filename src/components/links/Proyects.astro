@@ -1,0 +1,27 @@
+---
+interface Props {
+  href: string;
+  img: string;
+}
+const { href, img } = Astro.props;
+---
+
+<div class="proyecto">
+  <a href={href}>
+    <img src={img} alt="imagen" srcset="" />
+  </a>
+</div>
+<style>
+  .proyecto {
+    background-color: white;
+    box-shadow: 0px 5px 9px 1px #6b6b6b;
+    width: 60%;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .proyecto img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 10px;
+  }
+</style>
