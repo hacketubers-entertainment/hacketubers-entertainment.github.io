@@ -28,4 +28,24 @@ const { href, img } = Astro.props;
       inset 15px 15px 16px #999999,
       inset -15px -15px 16px #ffffff;
   }
+  @media only screen and (min-width: 0) and (max-width: 1035px) {
+    a {
+      display: flex;
+      box-shadow: 15px 16px 12px 0px #878787;
+      border-radius: 15px;
+      animation: 1s;
+      flex: 0 0 30%;
+      box-sizing: border-box;
+    }
+    a img {
+      margin: auto;
+      width: 50%;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    a img {
+      margin: auto;
+      width: 50%;
+    }
+  }
 </style>

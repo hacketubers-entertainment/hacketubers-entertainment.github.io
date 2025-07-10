@@ -29,7 +29,17 @@ import RedesSociales from "../links/RedesSociales.astro";
 <style>
   .cont_redes {
     margin-top: 10px;
+    width: 100%;
     display: flex;
     justify-content: space-around;
+  }
+  @media only screen and (min-width: 0px) and (max-width: 1035px) {
+    .cont_redes {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      gap: 10px;
+    }
   }
 </style>
