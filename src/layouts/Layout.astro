@@ -21,7 +21,19 @@ import NavBar from "../components/navBar.astro";
   </body>
 </html>
 
-<style>
+<style is:global>
+  @font-face {
+    font-family: "montserrat";
+    src: url("../fonts/Montserrat/Montserrat-VariableFont_wght.ttf");
+  }
+  @font-face {
+    font-family: "sigmar";
+    src: url("../fonts/Sigmar/Sigmar-Regular.ttf");
+  }
+  @font-face {
+    font-family: "bebas";
+    src: url("../fonts/Bebas_Neue/BebasNeue-Regular.ttf");
+  }
   html,
   body {
     margin: 0;
@@ -29,6 +41,7 @@ import NavBar from "../components/navBar.astro";
     height: 100%;
   }
   body {
+    font-family: "montserrat";
     background-color: hsla(132, 0%, 100%, 1);
     background-image: radial-gradient(
         circle at 91% 11%,

@@ -15,13 +15,13 @@
     background-size: 100%;
     background-attachment: fixed;
     box-shadow:
-      inset -18px -18px 66px #29003f,
+      inset -1vw -1vw 3vw #29003f,
       inset 18px 18px 66px #e8bcff34;
   }
   .contenido-informacion {
     position: absolute;
     top: 25%;
-    left: 10%;
+    left: 1vw;
     color: aliceblue;
     background-color: rgba(0, 0, 0, 0.288);
     backdrop-filter: blur(10px);
@@ -41,5 +41,13 @@
     border-style: solid;
     padding: 15px;
     cursor: pointer;
+  }
+  .ver-mas:hover {
+    padding: 16px;
+  }
+  @media screen and (max-width: 800px) {
+    .contenido-informacion {
+      left: 0px;
+    }
   }
 </style>
