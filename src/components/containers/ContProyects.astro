@@ -5,10 +5,9 @@ import Proyects from "../links/Proyects.astro";
 <h2 class="subtitulo">Proyectos</h2>
 <div class="Proyectos_container">
   <Proyects href="pagina.astro" img="/images/Banner lemon clicker.jpg" />
-</div>
-<div class="Proyectos_container">
   <Proyects href="pagina.astro" img="/images/banner pvz store.jpg" />
 </div>
+
 <style>
   .subtitulo {
     margin-top: 40px;
@@ -16,10 +15,11 @@ import Proyects from "../links/Proyects.astro";
     font-family: "montserrat";
   }
   .Proyectos_container {
-    display: flex;
+    justify-items: center;
+    box-sizing: content-box;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     gap: 20px;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
   }
 </style>
