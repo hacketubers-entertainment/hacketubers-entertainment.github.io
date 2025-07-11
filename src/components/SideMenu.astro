@@ -1,0 +1,80 @@
+---
+// src/components/SideMenu.astro
+---
+
+<div id="side-menu" class="side-menu">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="/paginas/juegos.html">Juegos</a>
+  <a>Aplicaciones</a>
+  <a>Sitios Web</a>
+  <a>Proyectos</a>
+</div>
+
+<style>
+  .side-menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1001; /* Asegúrate de que sea mayor que el z-index del header */
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+
+  .side-menu a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+
+  .side-menu a:hover {
+    color: #f1f1f1;
+  }
+
+  .side-menu .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+</style>
+
+<script>
+  function openNav() {
+    const sideMenu = document.getElementById("side-menu");
+    if (sideMenu) {
+      sideMenu.style.width = "250px";
+    }
+  }
+
+  function closeNav() {
+    const sideMenu = document.getElementById("side-menu");
+    if (sideMenu) {
+      sideMenu.style.width = "0";
+    }
+  }
+
+  // Adjuntar openNav al botón del menú en navBar.astro
+  // Esto se hará en navBar.astro, pero la función está definida aquí
+  // para mantener la lógica del menú lateral junta.
+  // Considera mover esta lógica si prefieres mantenerla separada.
+  // document.addEventListener('DOMContentLoaded', () => {
+  //   const menuButton = document.getElementById('menu-button-placeholder'); // Este ID debe ser el del botón en navBar.astro
+  //   if (menuButton) {
+  //     menuButton.addEventListener('click', openNav);
+  //   }
+  // });
+
+  // Hacer las funciones openNav y closeNav globales para que puedan ser llamadas desde navBar.astro
+  if (typeof window !== 'undefined') {
+    (window as any).openNav = openNav;
+    (window as any).closeNav = closeNav;
+  }
+</script>

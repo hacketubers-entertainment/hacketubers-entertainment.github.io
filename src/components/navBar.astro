@@ -13,10 +13,29 @@
     <a class="apartados"><p>Sitios Web</p></a>
     <a class="apartados"><p>proyectos</p></a>
   </div>
-  <label class="btn_menu" class="apartados" for="btn-menu"
-    ><img src="/icons/menu-01-stroke-rounded.svg" alt="" /></label
+  <label id="menu-button" class="btn_menu" class="apartados" for="btn-menu"
+    ><img src="/icons/menu-01-stroke-rounded.svg" alt="Abrir menú" /></label
   >
 </header>
+
+<script>
+  // Script para manejar la apertura del menú lateral
+  // Asegúrate de que SideMenu.astro está importado o sus funciones openNav/closeNav son globales
+  // y que el SideMenu tiene el id="side-menu"
+  const menuButton = document.getElementById('menu-button');
+  if (menuButton) {
+    menuButton.addEventListener('click', () => {
+      // Suponiendo que openNav está definida globalmente desde SideMenu.astro
+      // o que SideMenu.astro maneja su propia visibilidad basado en eventos.
+      // Para una integración más limpia, podrías usar custom events o un store.
+      if (typeof openNav === 'function') {
+        openNav();
+      } else {
+        console.error('La función openNav no está definida. Asegúrate de que SideMenu.astro se carga y define openNav globalmente o ajusta la lógica de eventos.');
+      }
+    });
+  }
+</script>
 
 <style>
   @font-face {
