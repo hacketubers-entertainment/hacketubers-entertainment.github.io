@@ -1,0 +1,125 @@
+---
+
+---
+
+<main>
+  <div id="cont_titulo_juego">
+    <h2 id="titulo_juego">Lemon<br />Clicker</h2>
+  </div>
+  <div id="img_info">
+    <img
+      id="imagen_principal"
+      src="imagenes/icon_transparente.png"
+      alt=""
+      srcset=""
+    />
+    <div id="cont_presentacion">
+      <p id="presentacion">
+        ¡Prepárate para exprimir diversión! 🍋 <br /><br />
+        En este emocionante juego clicker, tu misión es convertir un humilde limón
+        en una auténtica máquina de ganancias. <br /><br />
+        Personaliza tu limón con estilos únicos, adquiere mejoras para maximizar
+        tus clics y desbloquea poderosos autoclicks que trabajarán mientras tú descansas.
+        ¿Tienes lo necesario para crear el imperio limonero definitivo? ¡Haz clic
+        y descúbrelo!
+      </p>
+    </div>
+  </div>
+  <div id="cont_capturas">
+    <img
+      class="imagen_vertical"
+      src="imagenes/capturas_lemonclicker/IMG_20250315_082533.jpg"
+      alt=""
+      srcset=""
+    />
+    <img
+      class="imagen_vertical"
+      src="imagenes/capturas_lemonclicker/IMG_20250315_082615.jpg"
+      alt=""
+      srcset=""
+    />
+    <img
+      class="imagen_vertical"
+      src="imagenes/capturas_lemonclicker/IMG_20250315_082648.jpg"
+      alt=""
+      srcset=""
+    />
+  </div>
+  <div id="cont_botones_descarga">
+    <h2>Disponible en:</h2>
+  </div>
+</main>
+<style>
+  @font-face {
+    font-family: "milky_mania";
+    src: url("/src/fonts/MilkyMania.ttf");
+  }
+
+  body {
+    background-image: url("/src/assets/fondo.webp");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  #cont_itulo_juego {
+    display: flex;
+  }
+  #titulo_juego {
+    font-family: "milky_mania";
+    font-size: 15vh;
+    color: white;
+    text-align: center;
+    margin: 0px;
+    margin-top: 50px;
+    -webkit-text-stroke-width: 0.1px;
+    -webkit-text-stroke-color: black;
+  }
+  #img_info {
+    display: flex;
+  }
+  #imagen_principal {
+    cursor: pointer;
+    filter: drop-shadow(2px 2px 5px #000000);
+    width: 50%;
+  }
+  #cont_presentacion {
+    align-content: center;
+  }
+  #presentacion {
+    border-radius: 10px;
+    padding: 10px 5% 10px 5%;
+    background-color: rgba(0, 0, 0, 0.541);
+    font-size: 22px;
+    color: white;
+  }
+  #cont_capturas {
+    display: flex;
+    justify-content: space-around;
+  }
+  .imagen_vertical {
+    width: 30vw;
+    box-shadow: 0px 5px 9px 1px rgba(0, 0, 0, 0.507);
+    border-radius: 5px;
+  }
+  #cont_botones_descarga {
+    margin-top: 60px;
+    text-align: center;
+    font-size: large;
+    color: aliceblue;
+  }
+  #boton_playstore {
+    width: 50vw;
+  }
+  @media only screen and (min-width: 0px) and (max-width: 854px) {
+    #img_info {
+      display: block;
+    }
+    #imagen_principal {
+      width: 100%;
+    }
+    #boton_playstore {
+      width: 70vw;
+    }
+  }
+</style>
