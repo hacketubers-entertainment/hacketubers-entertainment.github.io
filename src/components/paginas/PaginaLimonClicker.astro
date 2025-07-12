@@ -1,15 +1,30 @@
 ---
-
+import GooglePlay from "../buttons/GooglePlay.astro";
+import Carrusel from "../carruseles/carrusel.astro";
+const imagenesCarrusel = [
+  {
+    src: "/src/assets/images/limonClicker/limon1.jpg",
+    tipo: "imagen_vertical",
+  },
+  {
+    src: "/src/assets/images/limonClicker/limon2.jpg",
+    tipo: "imagen_vertical",
+  },
+  {
+    src: "/src/assets/images/limonClicker/limon3.jpg",
+    tipo: "imagen_vertical",
+  },
+];
 ---
 
 <main>
-  <div id="cont_titulo_juego">
+  <span id="cont_titulo_juego">
     <h2 id="titulo_juego">Lemon<br />Clicker</h2>
-  </div>
+  </span>
   <div id="img_info">
     <img
       id="imagen_principal"
-      src="imagenes/icon_transparente.png"
+      src="/src/assets/icon_transparente.png"
       alt=""
       srcset=""
     />
@@ -25,28 +40,12 @@
       </p>
     </div>
   </div>
-  <div id="cont_capturas">
-    <img
-      class="imagen_vertical"
-      src="imagenes/capturas_lemonclicker/IMG_20250315_082533.jpg"
-      alt=""
-      srcset=""
-    />
-    <img
-      class="imagen_vertical"
-      src="imagenes/capturas_lemonclicker/IMG_20250315_082615.jpg"
-      alt=""
-      srcset=""
-    />
-    <img
-      class="imagen_vertical"
-      src="imagenes/capturas_lemonclicker/IMG_20250315_082648.jpg"
-      alt=""
-      srcset=""
-    />
-  </div>
+
+  <Carrusel images={imagenesCarrusel} />
+
   <div id="cont_botones_descarga">
     <h2>Disponible en:</h2>
+    <GooglePlay />
   </div>
 </main>
 <style>
@@ -88,29 +87,19 @@
   }
   #presentacion {
     border-radius: 10px;
-    padding: 10px 5% 10px 5%;
+    padding: 3vw 5% 3vw 5%;
     background-color: rgba(0, 0, 0, 0.541);
     font-size: 22px;
     color: white;
   }
-  #cont_capturas {
-    display: flex;
-    justify-content: space-around;
-  }
-  .imagen_vertical {
-    width: 30vw;
-    box-shadow: 0px 5px 9px 1px rgba(0, 0, 0, 0.507);
-    border-radius: 5px;
-  }
+
   #cont_botones_descarga {
     margin-top: 60px;
     text-align: center;
     font-size: large;
     color: aliceblue;
   }
-  #boton_playstore {
-    width: 50vw;
-  }
+
   @media only screen and (min-width: 0px) and (max-width: 854px) {
     #img_info {
       display: block;

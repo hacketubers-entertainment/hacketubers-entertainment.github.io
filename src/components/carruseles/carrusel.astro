@@ -1,0 +1,50 @@
+---
+interface image {
+  src: string;
+  tipo: string;
+}
+interface Props {
+  images: image[];
+}
+const { images } = Astro.props;
+---
+
+<div id="cont_capturas">
+  {images.map((image, index) => <img class={image.tipo} src={image.src} />)}
+</div>
+<style>
+  #cont_capturas {
+    display: flex;
+    justify-content: center;
+    height: 30vw;
+    gap: 2vw;
+  }
+  @media screen and (max-width: 800px) {
+    #cont_capturas {
+      height: 50vw;
+    }
+  }
+  .imagen_vertical {
+    box-shadow: 5px 5px 19px rgba(0, 0, 0, 0.658);
+    border-radius: 5px;
+  }
+</style>
+
+<img
+  class="imagen_vertical"
+  src="imagenes/capturas_lemonclicker/IMG_20250315_082533.jpg"
+  alt=""
+  srcset=""
+/>
+<img
+  class="imagen_vertical"
+  src="imagenes/capturas_lemonclicker/IMG_20250315_082615.jpg"
+  alt=""
+  srcset=""
+/>
+<img
+  class="imagen_vertical"
+  src="imagenes/capturas_lemonclicker/IMG_20250315_082648.jpg"
+  alt=""
+  srcset=""
+/>
