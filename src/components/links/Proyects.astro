@@ -39,12 +39,13 @@ const { href, img } = Astro.props;
     height: 100%;
     aspect-ratio: 16/9;
     animation: revealproyect linear both;
+    object-fit: cover;
     animation-timeline: view();
     animation-range: entry 10% cover 30%;
   }
   @keyframes revealcontproyect {
     from {
-      transform: translate(0px, 100px);
+      transform: translate(0px, 50px);
       opacity: 0;
     }
     to {

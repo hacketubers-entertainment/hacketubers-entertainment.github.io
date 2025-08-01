@@ -18,7 +18,8 @@ import SideMenu from "../components/SideMenu.astro"; // Importar SideMenu
   </head>
   <body>
     <NavBar />
-    <SideMenu /> <!-- Añadir SideMenu al layout -->
+    <SideMenu />
+    <!-- Añadir SideMenu al layout -->
     <slot />
   </body>
 </html>
@@ -35,6 +36,10 @@ import SideMenu from "../components/SideMenu.astro"; // Importar SideMenu
   @font-face {
     font-family: "bebas";
     src: url("../fonts/Bebas_Neue/BebasNeue-Regular.ttf");
+  }
+  @font-face {
+    font-family: "EA";
+    src: url("../fonts/ElectronicArtsText-Regular.woff2");
   }
   html,
   body {
