@@ -19,6 +19,9 @@ const { href, img } = Astro.props;
     box-shadow:
       15px 15px 16px #999999,
       -5px -5px 6px #ffffff;
+    animation: reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 30%;
   }
   a:hover {
     transform: translate(5px, 5px);
@@ -27,6 +30,14 @@ const { href, img } = Astro.props;
     box-shadow:
       inset 15px 15px 16px #999999,
       inset -15px -15px 16px #ffffff;
+  }
+  @keyframes reveal {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
   @media only screen and (min-width: 0) and (max-width: 1035px) {
     a {
