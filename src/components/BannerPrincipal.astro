@@ -1,3 +1,9 @@
+---
+import ScreenRelative from "./ScreenRelative.astro";
+import gsap from "gsap";
+---
+
+<ScreenRelative />
 <div class="contenedor-imagen-principal">
   <div class="contenido-informacion">
     <img
@@ -36,6 +42,7 @@
     width: 100px;
     height: 100px;
     border-radius: 50%;
+    opacity: 0;
   }
   .ver-mas {
     background-color: transparent;
@@ -55,3 +62,57 @@
     }
   }
 </style>
+
+<script>
+  import gsap from "gsap";
+  // 1. Fade-out del splash con GSAP
+  gsap.to(".contenedorRelativo", {
+    opacity: 0,
+    duration: 2,
+    ease: "power1.in",
+    onStart: animateLogo,
+    onComplete: eliminarScreen,
+  });
+  gsap.to(".logo", {
+    opacity: 1,
+    duration: 3,
+  });
+  const contenedor = document.querySelector(".contenedorRelativo");
+  const logo = document.querySelector(".logo");
+  const target = document.querySelector(".logotipoHE");
+  // 2. Animación de traslación + escala
+  function animateLogo() {
+    if (!logo || !target) return;
+
+    const from = logo.getBoundingClientRect();
+    const to = target.getBoundingClientRect();
+
+    const dx = to.left - from.left;
+    const dy = to.top - from.top;
+    const sx = to.width / from.width;
+    const sy = to.height / from.height;
+
+    // reset transform para partir de (0,0) y escala 1
+    gsap.set(logo, { x: 0, y: 0, scaleX: 1, scaleY: 1 });
+
+    gsap.to(logo, {
+      opacity: 1,
+      duration: 1,
+      x: dx,
+      y: dy,
+      scaleX: sx,
+      scaleY: sy,
+      ease: "power2.inOut",
+      onComplete: animateHE,
+    });
+  }
+  function animateHE() {
+    gsap.to(target, {
+      opacity: 1,
+    });
+  }
+  function eliminarScreen() {
+    contenedor?.remove();
+    logo?.remove();
+  }
+</script>
