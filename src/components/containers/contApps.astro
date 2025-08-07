@@ -1,0 +1,29 @@
+---
+import Proyects from "../links/Proyects.astro";
+---
+
+<div style="height: 100px;"></div>
+<h1 class="Titulo">Aplicaciones desarrollados</h1>
+<div class="Proyectos_container">
+  <Proyects href="pvzStore" img="/images/banner pvz store.jpg" />
+</div>
+
+<style>
+  .Titulo {
+    text-align: center;
+    font-family: "EA";
+  }
+  .subtitulo {
+    margin-top: 40px;
+    margin-left: 50px;
+    font-family: "montserrat";
+  }
+  .Proyectos_container {
+    justify-items: center;
+    box-sizing: content-box;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 20px;
+  }
+</style>
