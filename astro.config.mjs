@@ -5,4 +5,5 @@ import { defineConfig } from "astro/config";
 export default defineConfig({
   site: "https://hacketubers-entertainment.github.io",
   base: "/",
+  output: "static",
 });
