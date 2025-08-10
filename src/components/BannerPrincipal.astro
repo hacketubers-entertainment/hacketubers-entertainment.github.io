@@ -2,6 +2,11 @@
 import ScreenRelative from "./ScreenRelative.astro";
 ---
 
+<script is:inline>
+  function verMas() {
+    window.location.href = "#yo";
+  }
+</script>
 <ScreenRelative />
 <div class="contenedor-imagen-principal">
   <div class="contenido-informacion">
@@ -11,7 +16,7 @@ import ScreenRelative from "./ScreenRelative.astro";
       alt="Logotipo de Hacketubers Entertainment"
     />
     <p>Desarrollador de Aplicaciones y Videojuegos Indie</p>
-    <button onclick="ver_mas()" class="ver-mas">Ver Informacion</button>
+    <button onclick="verMas()" class="ver-mas">Ver Informacion</button>
   </div>
 </div>
 <style>
@@ -64,18 +69,27 @@ import ScreenRelative from "./ScreenRelative.astro";
 
 <script>
   import gsap from "gsap";
-  // 1. Fade-out del splash con GSAP
   gsap.to(".contenedorRelativo", {
-    opacity: 0,
-    duration: 2,
-    ease: "power1.in",
-    onStart: animateLogo,
-    onComplete: eliminarScreen,
-  });
-  gsap.to(".logo", {
     opacity: 1,
-    duration: 3,
+    duration: 0.5,
+    onComplete: FadeOut,
   });
+  // 1. Fade-out del splash con GSAP
+
+  function FadeOut() {
+    gsap.to(".contenedorRelativo", {
+      opacity: 0,
+      duration: 2,
+      ease: "power1.in",
+      onStart: animateLogo,
+      onComplete: eliminarScreen,
+    });
+    gsap.to(".logo", {
+      opacity: 1,
+      duration: 3,
+    });
+  }
+
   const contenedor = document.querySelector(".contenedorRelativo");
   const logo = document.querySelector(".logo");
   const target = document.querySelector(".logotipoHE");
