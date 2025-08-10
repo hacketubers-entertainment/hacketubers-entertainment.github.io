@@ -1,0 +1,119 @@
+---
+import GooglePlay from "../buttons/GooglePlay.astro";
+import Carrusel from "../carruseles/carrusel.astro";
+const imagenesCarrusel = [
+  {
+    src: "/images/pvzStore/capturas/unnamed.webp",
+    tipo: "imagen_vertical",
+  },
+  {
+    src: "/images/pvzStore/capturas/unnamed1.webp",
+    tipo: "imagen_vertical",
+  },
+  {
+    src: "/images/pvzStore/capturas/unnamed2.webp",
+    tipo: "imagen_vertical",
+  },
+  {
+    src: "/images/pvzStore/capturas/unnamed3.webp",
+    tipo: "imagen_vertical",
+  },
+];
+---
+
+<main>
+  <span id="cont_titulo_juego">
+    <h2 id="titulo_app">Pvz Store</h2>
+  </span>
+  <div id="img_info">
+    <img
+      id="imagen_principal"
+      src="/images/pvzStore/pvzStoreLogo.png"
+      alt=""
+      srcset=""
+    />
+    <div id="cont_presentacion">
+      <p id="presentacion">
+        Pvz store es una aplicacion comunitaria para compartir todo tipo de
+        contenido de Plantas contra zombies.<br />
+        Creada originalmente para compartir niveles modificados y recursos de estos,
+        ahora nos enfocamos en compartir todo tipo de contenido relacionado con la
+        saga, como mods, niveles, recursos, musica, etc.<br />
+        Nuestro objetivo actual es recrear la app desde cero para mejorar la experiencia
+        del usuario y añadir nuevas funcionalidades.<br />
+      </p>
+    </div>
+  </div>
+
+  <Carrusel images={imagenesCarrusel} />
+
+  <div id="cont_botones_descarga">
+    <h2>Disponible en:</h2>
+    <GooglePlay
+      Link="https://play.google.com/store/apps/details?id=pvz.store"
+    />
+  </div>
+</main>
+<style>
+  @font-face {
+    font-family: "milky_mania";
+    src: url("/src/fonts/MilkyMania.ttf");
+  }
+
+  body {
+    background-image: url("/images/pvzStore/backgroundImage.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  #cont_itulo_juego {
+    display: flex;
+  }
+  #titulo_app {
+    font-size: 15vh;
+    color: white;
+    text-align: center;
+    margin: 0px;
+    margin-top: 80px;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: black;
+  }
+  #img_info {
+    display: flex;
+  }
+  #imagen_principal {
+    cursor: pointer;
+    filter: drop-shadow(2px 2px 5px #000000);
+    width: 30%;
+  }
+  #cont_presentacion {
+    align-content: center;
+  }
+  #presentacion {
+    border-radius: 10px;
+    padding: 3vw 5% 3vw 5%;
+    background-color: rgb(11, 11, 14);
+    font-size: 22px;
+    color: white;
+  }
+
+  #cont_botones_descarga {
+    margin-top: 60px;
+    text-align: center;
+    font-size: large;
+    color: aliceblue;
+  }
+
+  @media only screen and (min-width: 0px) and (max-width: 854px) {
+    #img_info {
+      display: block;
+    }
+    #imagen_principal {
+      width: 100%;
+    }
+    #boton_playstore {
+      width: 70vw;
+    }
+  }
+</style>
