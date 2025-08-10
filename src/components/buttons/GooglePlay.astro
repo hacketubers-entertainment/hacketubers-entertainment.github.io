@@ -1,6 +1,12 @@
-<a
-  href="https://play.google.com/store/apps/details?id=com.hacketubersentertainment.limonclicker"
->
+---
+interface Props {
+  Link: string;
+}
+
+const { Link } = Astro.props;
+---
+
+<a href={Link}>
   <img id="boton_playstore" src="/images/BotonGooglePlay.png" alt="boton" />
 </a>
 <style>
