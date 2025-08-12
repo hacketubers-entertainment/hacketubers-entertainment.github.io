@@ -1,5 +1,5 @@
 ---
-
+const pathname = Astro.url.pathname;
 ---
 
 <header>
@@ -8,6 +8,15 @@
   </div>
   <div class="item"></div>
   <div class="SeccionesNavbar item">
+    {
+      pathname != "/" ? (
+        <a class="apartados" href="/">
+          <p>Home</p>
+        </a>
+      ) : (
+        <div />
+      )
+    }
     <a class="apartados" href="/juegos"><p>Juegos</p></a>
     <a class="apartados" href="/apps"><p>Aplicaciones</p></a>
     <a class="apartados" href="/webs"><p>Sitios Web</p></a>
