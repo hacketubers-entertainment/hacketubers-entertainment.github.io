@@ -1,0 +1,28 @@
+---
+const { Enlace } = Astro.props;
+---
+
+<a href={Enlace} target="_blank" id="boton_ir_al_sitio">
+  <img src="/icons/open-external.svg" /> Ir al sitio
+</a>
+<style>
+  #boton_ir_al_sitio {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    border: 1px solid #e0d8ff;
+    padding: 20px;
+    background-color: transparent;
+    color: #e0d8ff;
+    border-radius: 20px;
+    gap: 5px;
+    transition: 0.5s ease-in-out;
+  }
+  #boton_ir_al_sitio:hover {
+    width: 320px;
+    background-color: rgba(23, 0, 105, 0.24);
+    gap: 10px;
+  }
+</style>
