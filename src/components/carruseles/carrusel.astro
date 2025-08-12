@@ -7,17 +7,29 @@ interface Props {
   images: image[];
 }
 const { images } = Astro.props;
+console.log(images);
+console.log(images[0]);
 ---
 
-<div id="cont_capturas">
+<div
+  id="cont_capturas"
+  class={images[0].tipo === "imagen_horizontal" ? "horizontal" : "vertical"}
+>
   {images.map((image, index) => <img class={image.tipo} src={image.src} />)}
 </div>
 <style>
   #cont_capturas {
     display: flex;
-    justify-content: center;
     height: 30vw;
     gap: 2vw;
+    width: 100%;
+    overflow: auto;
+  }
+  .vertical {
+    justify-content: center;
+  }
+  .horizontal {
+    justify-content: start;
   }
   @media screen and (max-width: 800px) {
     #cont_capturas {
@@ -29,22 +41,3 @@ const { images } = Astro.props;
     border-radius: 5px;
   }
 </style>
-
-<img
-  class="imagen_vertical"
-  src="imagenes/capturas_lemonclicker/IMG_20250315_082533.jpg"
-  alt=""
-  srcset=""
-/>
-<img
-  class="imagen_vertical"
-  src="imagenes/capturas_lemonclicker/IMG_20250315_082615.jpg"
-  alt=""
-  srcset=""
-/>
-<img
-  class="imagen_vertical"
-  src="imagenes/capturas_lemonclicker/IMG_20250315_082648.jpg"
-  alt=""
-  srcset=""
-/>
