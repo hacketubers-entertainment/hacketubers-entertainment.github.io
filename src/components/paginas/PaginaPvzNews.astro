@@ -1,0 +1,161 @@
+---
+import GooglePlay from "../buttons/GooglePlay.astro";
+import Carrusel from "../carruseles/carrusel.astro";
+const imagenesCarrusel = [
+  {
+    src: "/images/PvzNews/capturas/captura1.png",
+    tipo: "imagen_horizontal",
+  },
+  {
+    src: "/images/PvzNews/capturas/captura2.png",
+    tipo: "imagen_vertical",
+  },
+  {
+    src: "/images/PvzNews/capturas/captura3.png",
+    tipo: "imagen_vertical",
+  },
+  {
+    src: "/images/PvzNews/capturas/captura4.png",
+    tipo: "imagen_vertical",
+  },
+];
+import IrAlSitio from "../buttons/IrAlSitio.astro";
+---
+
+<main>
+  <span id="cont_titulo_juego">
+    <h2 id="titulo_app">Pvz News</h2>
+  </span>
+  <div id="img_info">
+    <img
+      id="imagen_principal"
+      src="/images/PvzNews/logoPvzNews.png"
+      alt=""
+      srcset=""
+    />
+    <div id="cont_presentacion">
+      <p class="presentacion">
+        Más que un simple sitio de noticias, PvZ News es una plataforma
+        comunitaria en constante evolución. Aquí, cada rumor, cada mod y cada
+        pieza de arte tiene un hogar. Nuestra misión es simple: crear el espacio
+        más completo, dinámico y democrático para todos los seguidores del
+        universo PvZ.
+        <br />
+        <br />
+        <b>Un Periódico Impulsado por la Comunidad</b>
+        <br /> Lo que hace a PvZ News verdaderamente especial eres tú. Creemos que
+        las mejores historias y los descubrimientos más emocionantes a menudo provienen
+        de la propia comunidad. Por eso, hemos abierto nuestras puertas a cualquier
+        usuario apasionado que desee convertirse en redactor. Cualquier miembro puede
+        solicitar un rol de escritor. Para garantizar la calidad y veracidad, nuestro
+        equipo de moderadores verifica cuidadosamente tanto a los nuevos redactores
+        como cada una de las noticias publicadas. Es tu oportunidad de compartir
+        tus conocimientos, análisis y primicias con miles de fans.<br /><br />
+        <b>¿Qué Encontrarás en PvZ News?</b><br /> ¡Absolutamente Todo!
+        <ul class="presentacion">
+          <li>
+            Noticias Oficiales: Las últimas novedades de PopCap y EA sobre todos
+            los juegos de la saga, desde PvZ 2 hasta los clásicos como Garden
+            Warfare.
+          </li>
+          <li>
+            Detrás de Cámaras: Información y curiosidades sobre los creadores,
+            desarrolladores y artistas que dan vida a nuestros juegos favoritos.
+          </li>
+          <li>
+            Rumores y Filtraciones: Exploramos y analizamos los rumores más
+            candentes, siempre con una perspectiva crítica y honesta.
+          </li>
+          <li>
+            El Universo Fan: Una sección dedicada a lo que hace grande a esta
+          </li>
+          <li>
+            comunidad: los mejores Fangames, Mods innovadores, y las creaciones
+            que expanden el lore de PvZ.
+          </li>
+        </ul>
+      </p>
+    </div>
+  </div>
+
+  <Carrusel images={imagenesCarrusel} />
+  <div id="cont_botones">
+    <IrAlSitio Enlace="https://pvz-news.vercel.app" />
+  </div>
+</main>
+<style>
+  @font-face {
+    font-family: "milky_mania";
+    src: url("/src/fonts/MilkyMania.ttf");
+  }
+
+  body {
+    background: linear-gradient(
+      179deg,
+      rgb(10, 0, 26),
+      rgb(9, 0, 31) 35%,
+      rgb(15, 0, 29)
+    );
+    background-attachment: fixed;
+
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  #cont_itulo_juego {
+    display: flex;
+  }
+  #titulo_app {
+    font-size: 15vh;
+    color: #e0d8ff;
+    text-align: center;
+    margin: 0px;
+    margin-top: 80px;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: black;
+  }
+  #img_info {
+    color: #e0d8ff;
+    display: flex;
+    align-items: center;
+  }
+  #imagen_principal {
+    cursor: pointer;
+    filter: drop-shadow(2px 2px 5px #000000);
+    aspect-ratio: 1/1;
+    width: 500px;
+    height: 500px;
+  }
+  #cont_presentacion {
+    align-content: center;
+  }
+  .presentacion {
+    border-radius: 10px;
+    padding: 3vw 5% 3vw 5%;
+    background-color: rgba(11, 11, 14, 0.24);
+    font-size: 22px;
+    color: #e0d8ff;
+  }
+
+  #cont_botones {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    text-align: center;
+    font-size: large;
+    color: aliceblue;
+  }
+
+  @media only screen and (min-width: 0px) and (max-width: 854px) {
+    #img_info {
+      display: block;
+    }
+    #imagen_principal {
+      width: 100%;
+    }
+    #boton_playstore {
+      width: 70vw;
+    }
+  }
+</style>
