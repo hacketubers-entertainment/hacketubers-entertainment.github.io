@@ -1,0 +1,218 @@
+---
+import type { string } from "astro:schema";
+import ContVideosTiktok from "./contVideosTiktok.astro";
+const apiKey = "AIzaSyDyLaMac-6qi00ApfOs-bwmYboPd3mUL9A";
+const channelId = "UCecw_15QeIhpz4xO_lcKeng";
+
+// URLs de los endpoints
+const channelUrl = `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${apiKey}`;
+const searchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=viewCount&type=video&maxResults=4&key=${apiKey}`;
+
+// Variables para almacenar los datos
+let subscriberCount = 0;
+let totalViews = 0;
+let topVideos = [];
+
+try {
+  // 1. Obtener estadísticas del canal (vistas totales y suscriptores)
+  const channelRes = await fetch(channelUrl);
+  const channelData = await channelRes.json();
+  const stats = channelData.items[0].statistics;
+  subscriberCount = stats.subscriberCount;
+  totalViews = stats.viewCount;
+
+  // 2. Buscar los videos más vistos
+  const searchRes = await fetch(searchUrl);
+  const searchData = await searchRes.json();
+  const videoIds = searchData.items
+    .map((video: any) => video.id.videoId)
+    .join(",");
+
+  // 3. Obtener las estadísticas detalladas (likes, vistas) de los videos
+  if (videoIds) {
+    const videoUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${videoIds}&key=${apiKey}`;
+    const videoRes = await fetch(videoUrl);
+    const videoData = await videoRes.json();
+    topVideos = videoData.items;
+  }
+} catch (error) {
+  console.error("Error al obtener datos de YouTube:", error);
+}
+
+// Función auxiliar para formatear números
+const formatNumber = (num: number) => {
+  if (num >= 1000000) {
+    return (num / 1000000).toFixed(1) + "M";
+  }
+  if (num >= 1000) {
+    return (num / 1000).toFixed(1) + "K";
+  }
+  return num;
+};
+---
+
+<h2 class="subtitulo">Nuestra presencia en Redes Sociales</h2>
+<div class="stats-container">
+  <h2>Hacketubers Entertainment en Youtube</h2>
+  <div class="contStatsCard">
+    <div class="stats-card">
+      <span>Suscriptores</span>
+      <p>{formatNumber(subscriberCount)}</p>
+    </div>
+    <a
+      class="logoRedSocial"
+      href="https://www.youtube.com/channel/UCecw_15QeIhpz4xO_lcKeng"
+      target="_blank"
+    >
+      <img src="/images/youtube.png" alt="logo yt" />
+    </a>
+    <div class="stats-card">
+      <span>Vistas Totales</span>
+      <p>{formatNumber(totalViews)}</p>
+    </div>
+  </div>
+</div>
+
+<div class="videos-container">
+  <div class="videos-grid">
+    {
+      topVideos.map((video: any) => (
+        <div class="video-card">
+          <a
+            href={`https://www.youtube.com/watch?v=${video.id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src={video.snippet.thumbnails.medium.url}
+              alt={video.snippet.title}
+            />
+          </a>
+          <div class="video-info">
+            <h3>{video.snippet.title}</h3>
+            <p>
+              Vistas: {formatNumber(video.statistics.viewCount)} | Me gusta:{" "}
+              {formatNumber(video.statistics.likeCount)}
+            </p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>
+<div class="stats-container">
+  <h2>Hacketubers Entertainment en Tiktok</h2>
+  <div class="contStatsCard">
+    <div class="stats-card">
+      <span>Seguidores</span>
+      <p>5,5k</p>
+    </div>
+    <a
+      class="logoRedSocial"
+      href="https://www.tiktok.com/@hacketubersyt"
+      target="_blank"
+    >
+      <img src="/images/Tiktok.webp" alt="logo tiktok" />
+    </a>
+    <div class="stats-card">
+      <span>Likes Totales</span>
+      <p>630,7k</p>
+    </div>
+  </div>
+  <div class="videos-container">
+    <div class="videos-grid"><ContVideosTiktok /></div>
+  </div>
+  <style>
+    .stats-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .contStatsCard {
+      display: flex;
+      justify-content: space-evenly;
+      width: 500px;
+      align-self: center;
+    }
+    .stats-card {
+      background: #f0f0f0;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .stats-card p {
+      font-size: 2em;
+      font-weight: bold;
+      margin: 0;
+    }
+    .logoRedSocial {
+      width: 100px;
+      height: 100px;
+    }
+    .logoRedSocial img {
+      width: 100px;
+      height: 100px;
+    }
+    .videos-container {
+      text-align: center;
+    }
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .video-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    .video-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .video-info {
+      padding: 15px;
+      text-align: left;
+    }
+    .video-info h3 {
+      font-size: 1.2em;
+      margin: 0 0 10px;
+    }
+    @media only screen and (min-width: 0px) and (max-width: 600px) {
+      .contStatsCard {
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+        align-self: center;
+      }
+      .stats-card {
+        background: #f0f0f0;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .stats-card p {
+        font-size: 2em;
+        font-weight: bold;
+        margin: 0;
+      }
+      .logoRedSocial {
+        width: 80px;
+        height: 80px;
+      }
+      .logoRedSocial img {
+        width: 80px;
+        height: 80px;
+      }
+    }
+  </style>
+</div>
