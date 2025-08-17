@@ -1,5 +1,6 @@
 ---
-layout: '../../layouts/layout.astro'
+layout: '../../layouts/Layout.astro'
+title: 'Lemon Clicker'
 ---
 
 <br>
