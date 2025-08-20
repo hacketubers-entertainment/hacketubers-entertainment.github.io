@@ -6,8 +6,8 @@ interface Props {
 const { href, img } = Astro.props;
 ---
 
-<a class="icon_social" href={href}>
-  <img src={img} alt="icono" srcset="" />
+<a class="icon_social" href={href} target="_blank">
+  <img src={img} alt="icono" />
 </a>
 <style>
   a {
