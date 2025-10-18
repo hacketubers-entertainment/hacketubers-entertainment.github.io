@@ -5,7 +5,7 @@ import ContProyects from "../components/containers/ContProyects.astro";
 
 <Layout>
   <main>
-    <img src="" alt="" class="imagenPerfil" />
+    <img src="/images/foto_perfil.jpg" alt="" class="imagenPerfil" />
     <div class="descripcionPerfil">
       <p>
         Hola soy <b>Garly</b>, un desarrollador JavaScript apasionado y
@@ -18,6 +18,9 @@ import ContProyects from "../components/containers/ContProyects.astro";
         <br /> Me especializo en crear soluciones escalables y reutilizables, con
         un enfoque en experiencias fluidas tanto en web como en dispositivos móviles.
       </p>
+      <div>
+        <a class="cvdownload" href="/Documents/Garly Manzanero CV.pdf" download="Garly Manzanero cv.pdf">Descargar CV</a>
+      </div>
       <div class="contactoProfecional">
         <a href="https://github.com/hacketubers-entertainment"
           ><img src="/icons/GitHub.svg" alt="icono github" class="icono" /></a
@@ -48,16 +51,22 @@ import ContProyects from "../components/containers/ContProyects.astro";
 <style>
   main {
     padding-top: 100px;
+    height: 80vh;
+    position: relative;
   }
   .imagenPerfil {
     position: relative;
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
     background-color: rgb(195, 132, 255);
     left: 15vw;
-    top: 10vh;
+    top: 22vh;
     z-index: 3;
+    animation: contenidoAparece 1s cubic-bezier(.2,.9,.3,1) both;
+    animation-iteration-count: 1;
+    transition: all 0.3s ease;
+
   }
   .descripcionPerfil {
     background-color: rgba(255, 255, 255, 0.74);
@@ -66,9 +75,9 @@ import ContProyects from "../components/containers/ContProyects.astro";
     font-size: 24px;
     padding: 2vw 3vw 2vw 3vw;
     box-shadow:
-      11px 11px 22px #a1a1a1,
-      -11px -11px 22px #ffffff50;
-    border-radius: 20px;
+      11px 11px 22px #0000002d,
+      -11px -11px 22px #0000003a;
+    border-radius: 16px;
     animation: reveal linear both;
     animation-timeline: view();
     animation-range: entry 10% cover 30%;
@@ -78,10 +87,12 @@ import ContProyects from "../components/containers/ContProyects.astro";
     padding: 20px;
     width: 50vw;
     left: 30vw;
-    bottom: 25vh;
+    bottom: 30vh;
     font-size: 20px;
     text-align: justify;
     z-index: 4;
+    animation: contenidoAparece 1s cubic-bezier(.2,.9,.3,1) both;
+    animation-iteration-count: 1;
   }
   .contactoProfecional {
     position: absolute;
@@ -91,28 +102,102 @@ import ContProyects from "../components/containers/ContProyects.astro";
     width: 110px;
     justify-content: space-between;
   }
+  .cvdownload{
+    text-decoration: none;
+    color: rgba(69, 11, 136, 1);
+    font-size: 16px;
+    padding: 6px;
+    border: 1px solid rgba(69, 11, 136, 1);
+    background-color: transparent;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+  .cvdownload:hover{
+    background-color: rgba(69, 11, 136, 0.1);
+    padding: 6px 10px 6px 10px;
+  }
   .icono {
     width: 30px;
   }
   .stiker {
     position: absolute;
     width: 16vw;
-
-    animation: upDown 3s ease-in-out infinite;
-    transform: rotate(-10deg);
+    /* Use a CSS variable for per-sticker rotation so keyframes can animate scale/opacity only */
+    --rotation: -10deg;
+    /* start with rotation + translated down + smaller scale so element is hidden before animation */
+    transform: rotate(var(--rotation)) translateY(10vh) translatex(10vh) scale(0.6);
+    opacity: 0;
+    /* start visually lower using translateY; keyframes will animate translateY + scale + opacity */
+    animation: StikerAparece 1s cubic-bezier(.2,.9,.3,1) both;
+    animation-iteration-count: 1;
   }
+  /* Stagger individual stickers by setting different animation-delay and rotation */
   .tocar {
     left: 5vw;
-    top: 15vh;
+    top: 15vh; /* explicit final position so translateY animates relative to this */
+    --rotation: -8deg;
+    animation-delay: 0ms; /* first */
   }
   .estrella {
     right: 5vw;
-    top: 45vh;
-    transform: rotate(20deg);
+    top: 45vh; /* explicit final position */
+    --rotation: 20deg;
+    animation-delay: 10ms; /* second */
   }
   .marcador {
     left: 25vw;
     bottom: 5vh;
-    transform: rotate(-20deg);
+    --rotation: -20deg;
+    animation-delay: 30ms; /* third */
   }
+  @keyframes StikerAparece {
+    from {
+      /* start translated down 10vh, keep rotation and animate translateY + scale + opacity */
+      transform: rotate(var(--rotation)) translateY(30vh) scale(0.6);
+      opacity: 0;
+    }
+    to {
+      transform: rotate(var(--rotation)) translateY(0) scale(1);
+      opacity: 1;
+    }
+  }
+  @keyframes contenidoAparece {
+    from {
+      /* start translated down 10vh, keep rotation and animate translateY + scale + opacity */
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+  }
+}
+@media screen and (max-width: 1000px) {
+      .imagenPerfil {
+        left: 9vw;
+      }
+      .descripcionPerfil {
+        left: 30vw;
+        bottom: 35vh;
+        font-size: 18px;
+        width: 60vw;
+      }
+}
+@media screen and (max-width: 600px) {
+  main{
+    display: block;
+    height: auto;
+  }
+      .imagenPerfil {
+        position: static;
+        align-self: center;
+      }
+      .descripcionPerfil {
+        width: auto;
+        left: auto;
+        bottom: 5vh;
+        font-size: 1rem;
+      }
+      .stiker {
+        width: 0px;
+      }
+}
 </style>
