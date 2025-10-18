@@ -6,6 +6,9 @@ import ScreenRelative from "./ScreenRelative.astro";
   function verMas() {
     window.location.href = "#yo";
   }
+  function verPortafolio() {
+    window.location.href = "/GarlyPortfolio";
+  }
 </script>
 <ScreenRelative />
 <div class="contenedor-imagen-principal">
@@ -16,116 +19,128 @@ import ScreenRelative from "./ScreenRelative.astro";
       alt="Logotipo de Hacketubers Entertainment"
     />
     <p>Desarrollador de Aplicaciones y Videojuegos Indie</p>
-    <button onclick="verMas()" class="ver-mas">Ver Informacion</button>
+    <div>
+      <button onclick="verPortafolio()" class="ver-portfolio"
+        >Portafolio Personal</button
+      >
+      <button onclick="verMas()" class="ver-mas">Ver Información</button>
+    </div>
   </div>
-</div>
-<style>
-  .contenedor-imagen-principal {
-    overflow: hidden;
-    width: 100%;
-    height: 70vh;
-    background-image: url("/fondoCuadros.webp");
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-attachment: fixed;
-    box-shadow:
-      inset -1vw -1vw 3vw #29003f,
-      inset 18px 18px 66px #e8bcff34;
-  }
-  .contenido-informacion {
-    position: absolute;
-    top: 25%;
-    left: 1vw;
-    color: aliceblue;
-    background-color: rgba(0, 0, 0, 0.288);
-    backdrop-filter: blur(10px);
-    border-radius: 10px;
-    padding: 30px;
-  }
-  .logotipoHE {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    opacity: 0;
-  }
-  .ver-mas {
-    background-color: transparent;
-    color: white;
-    border: 1px;
-    border-color: white;
-    border-style: solid;
-    padding: 15px;
-    cursor: pointer;
-  }
-  .ver-mas:hover {
-    padding: 16px;
-  }
-  @media screen and (max-width: 800px) {
-    .contenido-informacion {
-      left: 0px;
+  <style>
+    .contenedor-imagen-principal {
+      overflow: hidden;
+      width: 100%;
+      height: 70vh;
+      background-image: url("/fondoCuadros.webp");
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-attachment: fixed;
+      box-shadow:
+        inset -1vw -1vw 3vw #29003f,
+        inset 18px 18px 66px #e8bcff34;
     }
-  }
-</style>
+    .contenido-informacion {
+      position: absolute;
+      top: 25%;
+      left: 1vw;
+      color: aliceblue;
+      background-color: rgba(0, 0, 0, 0.288);
+      backdrop-filter: blur(10px);
+      border-radius: 10px;
+      padding: 30px;
+    }
+    .logotipoHE {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      opacity: 0;
+    }
+    .ver-mas {
+      background-color: transparent;
+      color: white;
+      border: 1px;
+      border-color: white;
+      border-style: solid;
+      padding: 15px;
+      cursor: pointer;
+    }
 
-<script>
-  import gsap from "gsap";
-  gsap.to(".contenedorRelativo", {
-    opacity: 1,
-    duration: 0.5,
-    onComplete: FadeOut,
-  });
-  // 1. Fade-out del splash con GSAP
+    .ver-portfolio {
+      background-color: rgb(244, 235, 255);
+      color: rgba(69, 11, 136, 1);
+      border: 1px;
+      border-color: white;
+      border-style: solid;
+      padding: 15px;
+      cursor: pointer;
+    }
+    @media screen and (max-width: 800px) {
+      .contenido-informacion {
+        left: 0px;
+      }
+    }
+  </style>
 
-  function FadeOut() {
+  <script>
+    import gsap from "gsap";
     gsap.to(".contenedorRelativo", {
-      opacity: 0,
-      duration: 2,
-      ease: "power1.in",
-      onStart: animateLogo,
-      onComplete: eliminarScreen,
-    });
-    gsap.to(".logo", {
       opacity: 1,
-      duration: 3,
+      duration: 0.5,
+      onComplete: FadeOut,
     });
-  }
+    // 1. Fade-out del splash con GSAP
 
-  const contenedor = document.querySelector(".contenedorRelativo");
-  const logo = document.querySelector(".logo");
-  const target = document.querySelector(".logotipoHE");
-  // 2. Animación de traslación + escala
-  function animateLogo() {
-    if (!logo || !target) return;
+    function FadeOut() {
+      gsap.to(".contenedorRelativo", {
+        opacity: 0,
+        duration: 2,
+        ease: "power1.in",
+        onStart: animateLogo,
+        onComplete: eliminarScreen,
+      });
+      gsap.to(".logo", {
+        opacity: 1,
+        duration: 3,
+      });
+    }
 
-    const from = logo.getBoundingClientRect();
-    const to = target.getBoundingClientRect();
+    const contenedor = document.querySelector(".contenedorRelativo");
+    const logo = document.querySelector(".logo");
+    const target = document.querySelector(".logotipoHE");
+    // 2. Animación de traslación + escala
+    function animateLogo() {
+      if (!logo || !target) return;
 
-    const dx = to.left - from.left;
-    const dy = to.top - from.top;
-    const sx = to.width / from.width;
-    const sy = to.height / from.height;
+      const from = logo.getBoundingClientRect();
+      const to = target.getBoundingClientRect();
 
-    // reset transform para partir de (0,0) y escala 1
-    gsap.set(logo, { x: 0, y: 0, scaleX: 1, scaleY: 1 });
+      const dx = to.left - from.left;
+      const dy = to.top - from.top;
+      const sx = to.width / from.width;
+      const sy = to.height / from.height;
 
-    gsap.to(logo, {
-      opacity: 1,
-      duration: 1,
-      x: dx,
-      y: dy,
-      scaleX: sx,
-      scaleY: sy,
-      ease: "power2.inOut",
-      onComplete: animateHE,
-    });
-  }
-  function animateHE() {
-    gsap.to(target, {
-      opacity: 1,
-    });
-  }
-  function eliminarScreen() {
-    contenedor?.remove();
-    logo?.remove();
-  }
-</script>
+      // reset transform para partir de (0,0) y escala 1
+      gsap.set(logo, { x: 0, y: 0, scaleX: 1, scaleY: 1 });
+
+      gsap.to(logo, {
+        opacity: 1,
+        duration: 1,
+        x: dx,
+        y: dy,
+        scaleX: sx,
+        scaleY: sy,
+        ease: "power2.inOut",
+        onComplete: animateHE,
+      });
+    }
+    function animateHE() {
+      gsap.to(target, {
+        opacity: 1,
+      });
+    }
+    function eliminarScreen() {
+      contenedor?.remove();
+      logo?.remove();
+    }
+  </script>
+</div>
