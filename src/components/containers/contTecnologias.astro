@@ -1,0 +1,69 @@
+---
+interface Props {
+  tecnologias: string[];
+}
+const { tecnologias } = Astro.props;
+
+// Mapa de tecnologías conocidas -> {name, icon}
+const techMap: Record<string, { name: string; icon: string }> = {
+  astro: { name: "Astro", icon: "/icons/tech/Astro.svg" },
+  react: { name: "React", icon: "/icons/tech/React.svg" },
+  javascript: { name: "JavaScript", icon: "/icons/tech/javascript.svg" },
+  css: { name: "CSS", icon: "/icons/tech/css.svg" },
+  firebase: { name: "Firebase", icon: "/icons/tech/Firebase.svg" },
+  expo: { name: "Expo", icon: "/icons/tech/Expo.svg" },
+  gsap: { name: "GSAP", icon: "/icons/tech/gsap.svg" },
+  typescript: { name: "TypeScript", icon: "/icons/tech/typescript.svg" },
+  node: { name: "Node.js", icon: "/icons/tech/node.svg" },
+  nextjs: { name: "Next.js", icon: "/icons/tech/Next.js.svg" },
+  supabase: { name: "Supabase", icon: "/icons/tech/supabase-icon.svg" },
+  reactnative: { name: "React Native", icon: "/icons/tech/react-native-1.svg" },
+  godotengine: { name: "Godot Engine", icon: "/icons/tech/Godot Engine.svg" },
+};
+
+function normalizeKey(s: string) {
+  return s.toLowerCase().replace(/\s+/g, "").replace(/\./g, "");
+}
+
+---
+
+<div class="cont-tecnologias">
+  {tecnologias.map((t) => {
+    const key = normalizeKey(t);
+    const found = techMap[key];
+    return (
+      <div class="tech-item" title={found ? found.name : t}>
+        <img src={found ? found.icon : `/icons/tech/${key}.svg`} alt={`${t} icon`} onerror="this.style.display='none'" />
+        <span>{found ? found.name : t}</span>
+      </div>
+    );
+  })}
+</div>
+
+<style>
+  .cont-tecnologias {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+    align-items: center;
+  }
+  .tech-item {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    padding: 6px 8px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.6);
+    font-size: 0.7rem;
+  }
+  .tech-item img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    display: inline-block;
+  }
+</style>
+---
+
+---

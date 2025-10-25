@@ -1,12 +1,28 @@
 ---
 import Proyects from "../links/Proyects.astro";
+interface Props {
+  tecnologias?: boolean;
+}
+const { tecnologias } = Astro.props;
 ---
 
 <h2 class="subtitulo">Proyectos</h2>
 <div class="Proyectos_container">
-  <Proyects href="./limonClicker" img="/images/Banner lemon clicker.jpg" />
-  <Proyects href="./pvzStore" img="/images/banner pvz store.jpg" />
-  <Proyects href="./PvzNews" img="/images/banner-pvz-news.webp" />
+  <Proyects
+    href="/limonClicker"
+    img="/images/Banner lemon clicker.jpg"
+    tecnologias={tecnologias ? ["Godot Engine"] : []}
+  />
+  <Proyects
+    href="/pvzStore"
+    img="/images/banner pvz store.jpg"
+    tecnologias={tecnologias ? ["React native", "supabase", "Firebase", "Expo"] : []}
+  />
+  <Proyects
+    href="/PvzNews"
+    img="/images/banner-pvz-news.webp"
+    tecnologias={tecnologias ? ["react", "firebase", "Supabase", "nextjs"] : []}
+  />
 </div>
 
 <style>
