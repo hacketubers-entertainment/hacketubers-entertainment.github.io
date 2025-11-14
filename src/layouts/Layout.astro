@@ -48,27 +48,27 @@ import SideMenu from "../components/SideMenu.astro"; // Importar SideMenu
     height: 100%;
   }
   body {
-    font-family: "montserrat";
-    background-color: hsla(132, 0%, 100%, 1);
-    background-image: radial-gradient(
-        circle at 91% 11%,
-        hsla(13, 100%, 88%, 0.226) 4.038772213247173%,
-        transparent 37.2265767974114%
-      ),
-      radial-gradient(
-        circle at 66% 37%,
-        rgba(228, 194, 255, 0.363) 0%,
-        transparent 63.33640956108327%
-      ),
-      radial-gradient(
-        circle at 36% 87%,
-        hsla(268, 100%, 88%, 1) 12.107536057085522%,
-        transparent 63.33640956108327%
-      );
+    background: linear-gradient(50deg, #b692ff, #ffffff, #fffaef, #fdf6ff, #f3ecff);
+    background-size: 1000% 1000%;
+
+    animation: AnimationName 33s ease infinite;
+    font-family: "montserrat", sans-serif;
     background-blend-mode: normal, normal, normal;
     background-repeat: no-repeat;
     background-attachment: fixed;
   }
+  .css-selector {
+    background: linear-gradient(270deg, #6000ff, #ffffff, #fffaef, #fdf6ff, #f3ecff);
+    background-size: 1000% 1000%;
+
+    animation: AnimationName 30s ease infinite;
+}
+
+@keyframes AnimationName {
+    0%{background-position:0% 96%}
+    50%{background-position:100% 5%}
+    100%{background-position:0% 96%}
+}
   /* Scrollbar personalizado */
   ::-webkit-scrollbar {
     width: 10px;
