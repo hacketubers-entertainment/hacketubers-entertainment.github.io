@@ -1,6 +1,21 @@
 ---
 import NavBar from "../components/navBar.astro";
 import SideMenu from "../components/SideMenu.astro"; // Importar SideMenu
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  withBackground?: boolean;
+}
+
+const {
+  title = "Hacketubers Entertainment",
+  description = "Desarrollador de Aplicaciones y Videojuegos Indie. Creamos experiencias únicas.",
+  image = "/logo.png",
+  withBackground = true,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -10,7 +25,16 @@ import SideMenu from "../components/SideMenu.astro"; // Importar SideMenu
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/logoico.ico" />
     <meta name="generator" content={Astro.generator} />
-    <title>Hacketubers Entertainment</title>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
     <meta
       name="google-site-verification"
       content="google90f1e9edfda55b64.html"
@@ -21,79 +45,10 @@ import SideMenu from "../components/SideMenu.astro"; // Importar SideMenu
     <SideMenu />
     <!-- Añadir SideMenu al layout -->
     <slot />
+    <Footer withBackground={withBackground} />
   </body>
 </html>
 
 <style is:global>
-  @font-face {
-    font-family: "montserrat";
-    src: url("../fonts/Montserrat/Montserrat-VariableFont_wght.ttf");
-  }
-  @font-face {
-    font-family: "sigmar";
-    src: url("../fonts/Sigmar/Sigmar-Regular.ttf");
-  }
-  @font-face {
-    font-family: "bebas";
-    src: url("../fonts/Bebas_Neue/BebasNeue-Regular.ttf");
-  }
-  @font-face {
-    font-family: "EA";
-    src: url("../fonts/ElectronicArtsText-Regular.woff2");
-  }
-  html,
-  body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-  }
-  body {
-    font-family: "montserrat";
-    background-color: hsla(132, 0%, 100%, 1);
-    background-image: radial-gradient(
-        circle at 91% 11%,
-        hsla(13, 100%, 88%, 0.226) 4.038772213247173%,
-        transparent 37.2265767974114%
-      ),
-      radial-gradient(
-        circle at 66% 37%,
-        rgba(228, 194, 255, 0.363) 0%,
-        transparent 63.33640956108327%
-      ),
-      radial-gradient(
-        circle at 36% 87%,
-        hsla(268, 100%, 88%, 1) 12.107536057085522%,
-        transparent 63.33640956108327%
-      );
-    background-blend-mode: normal, normal, normal;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-  }
-  /* Scrollbar personalizado */
-  ::-webkit-scrollbar {
-    width: 10px;
-    height: 8px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #4e4376 0%, #22608a 100%);
-    border-radius: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #191919;
-    border-radius: 8px;
-  }
-  ::-webkit-scrollbar-corner {
-    background: #191919;
-  }
-
-  /* Firefox */
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: #4e4376 #191919;
-  }
-  .subtitulo {
-    margin-top: 40px;
-    margin-left: 50px;
-    font-family: "montserrat";
-  }
+  @import "../styles/global.css";
 </style>

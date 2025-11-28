@@ -1,0 +1,188 @@
+---
+interface Props {
+    withBackground?: boolean;
+}
+
+const { withBackground = false } = Astro.props;
+---
+
+<!-- Define the clipPath SVG (hidden) -->
+<svg width="0" height="0" style="position: absolute;">
+    <defs>
+        <clipPath id="footer-curve" clipPathUnits="objectBoundingBox">
+            <!-- 
+        M 0,0.1: Start at left, 10% down from top (to avoid sub-pixel clipping issues at corners if we want them sharp, or just 0,0)
+        Actually, let's start at 0,0 (top-left).
+        Q 0.5,0.2 1,0: Curve down to 20% height in the middle, end at top-right (1,0).
+        L 1,1: Line to bottom-right.
+        L 0,1: Line to bottom-left.
+        Z: Close.
+      -->
+            <path d="M 0,0 Q 0.5,0.15 1,0 L 1,1 L 0,1 Z"></path>
+        </clipPath>
+    </defs>
+</svg>
+
+<footer class:list={["footer-container", { "with-bg": withBackground }]}>
+    <div class="footer-content">
+        <div class="footer-grid">
+            <div class="brand-section">
+                <h3>Hacketubers Entertainment</h3>
+                <p>Entertainment & Development</p>
+            </div>
+
+            <div class="links-section">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="#proyectos">Proyectos</a></li>
+                    <li><a href="#yo">Nosotros</a></li>
+                    <li><a href="#cont_redes">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="social-section">
+                <h4>Síguenos</h4>
+                <div class="social-icons">
+                    <!-- Placeholder icons -->
+                    <a href="https://x.com/hacketubersyt" aria-label="Twitter"
+                        >X</a
+                    >
+                    <a
+                        href="https://github.com/hacketubers-entertainment"
+                        aria-label="GitHub">GH</a
+                    >
+                    <a
+                        href="https://www.linkedin.com/in/garly-manzanero-sanchez-547718271"
+                        aria-label="LinkedIn">IN</a
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>
+                &copy; {new Date().getFullYear()} Hacketubers Entertainment. Todos
+                los derechos reservados.
+            </p>
+        </div>
+    </div>
+</footer>
+
+<style>
+    .footer-container {
+        position: relative;
+        width: 100%;
+        margin-top: 2rem; /* Spacing from previous content */
+        color: #333;
+        background-color: transparent;
+
+        /* Apply the clip-path */
+        clip-path: url(#footer-curve);
+        /* Fallback for older browsers? They just get a rect. */
+
+        /* Ensure the footer is tall enough for the curve */
+        padding-top: 4rem; /* Push content down below the curve dip */
+    }
+
+    .footer-container.with-bg {
+        color: white;
+        background-color: #1a1a1a; /* Dark background */
+        /* Optional: Add background image here if requested */
+        /* background-image: url('/path/to/image.jpg'); */
+        /* background-size: cover; */
+    }
+
+    /* If no background is requested (transparent/white), we still need a color for the footer itself 
+     so the clip-path is visible against the body background. 
+     Wait, if withBackground is false, user said "solo sera en blanco".
+     So background-color: white.
+  */
+    .footer-container:not(.with-bg) {
+        background-color: rgba(
+            255,
+            255,
+            255,
+            0.8
+        ); /* Semi-transparent white or solid */
+        backdrop-filter: blur(10px); /* Glassmorphism effect */
+    }
+
+    .footer-content {
+        padding: 2rem 1rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .brand-section h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        font-family: var(--font-display, sans-serif);
+    }
+
+    .links-section ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .links-section li {
+        margin-bottom: 0.5rem;
+    }
+
+    .links-section a {
+        text-decoration: none;
+        color: inherit;
+        transition: opacity 0.3s;
+        font-weight: 500;
+    }
+
+    .links-section a:hover {
+        opacity: 0.7;
+        color: var(--color-accent, #8000cf);
+    }
+
+    .social-section h4,
+    .links-section h4 {
+        margin-bottom: 1rem;
+        font-family: var(--font-main, sans-serif);
+        font-weight: 700;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .social-icons a {
+        color: inherit;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.2rem;
+        transition: transform 0.2s;
+    }
+
+    .social-icons a:hover {
+        transform: translateY(-3px);
+        color: var(--color-accent, #8000cf);
+    }
+
+    .copyright {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        font-size: 0.9rem;
+        opacity: 0.8;
+    }
+
+    .footer-container.with-bg .copyright {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+</style>

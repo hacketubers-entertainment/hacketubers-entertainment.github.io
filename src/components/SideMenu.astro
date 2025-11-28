@@ -20,61 +20,72 @@
     z-index: 999;
     width: 0vw;
     height: 100vh;
-    background-color: rgba(255, 255, 255, 0.301);
-    background-image: radial-gradient(
-        circle at 91% 11%,
-        hsla(13, 100%, 88%, 0.226) 4.038772213247173%,
-        transparent 37.2265767974114%
-      ),
-      radial-gradient(
-        circle at 66% 37%,
-        rgba(228, 194, 255, 0.363) 0%,
-        transparent 63.33640956108327%
-      ),
-      radial-gradient(
-        circle at 36% 87%,
-        rgba(222, 194, 255, 0.637) 12.107536057085522%,
-        transparent 63.33640956108327%
-      );
-    background-blend-mode: normal, normal, normal;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    backdrop-filter: blur(10px);
-    transition: 0.5s;
+    background-color: rgba(0, 0, 0, 0.5); /* Darker, simpler overlay */
+    backdrop-filter: blur(5px);
+    transition:
+      opacity 0.3s ease,
+      width 0s 0.3s; /* Delay width change to allow fade out */
     position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
   }
+
+  .backgroudMenu.open {
+    width: 100vw;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
   .side-menu {
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 100; /* Asegúrate de que sea mayor que el z-index del header */
+    z-index: 1000;
     top: 0;
     left: 0;
-    background-color: #ffffff;
+    background-color: var(--color-background);
     overflow-x: hidden;
-    transition: 0.5s;
+    transition: width 0.3s ease;
     padding-top: 60px;
+    box-shadow: var(--shadow-md);
+  }
+
+  .side-menu.open {
+    width: 250px;
   }
 
   .side-menu a {
-    padding: 8px 8px 8px 32px;
+    padding: 15px 25px;
     text-decoration: none;
-    font-size: 25px;
-    color: #5f5f5f;
+    font-size: 1.2rem;
+    color: var(--color-text);
     display: block;
     transition: 0.3s;
+    font-family: var(--font-main);
+    border-left: 4px solid transparent;
   }
 
   .side-menu a:hover {
-    color: #000000;
+    color: var(--color-accent);
+    background-color: rgba(0, 0, 0, 0.05);
+    border-left: 4px solid var(--color-accent);
   }
 
   .side-menu .closebtn {
     position: absolute;
-    top: 0;
-    right: 25px;
+    top: 10px;
+    right: 20px;
     font-size: 36px;
-    margin-left: 50px;
+    margin-left: 0;
+    padding: 0;
+    color: var(--color-text);
+  }
+
+  .side-menu .closebtn:hover {
+    background: none;
+    border: none;
+    color: var(--color-accent);
   }
 </style>
 
@@ -82,10 +93,9 @@
   function openNav() {
     const sideMenu = document.getElementById("side-menu");
     const backgroudMenu = document.getElementById("backgroudMenu");
-    if (sideMenu) {
-      sideMenu.style.width = "250px";
-      backgroudMenu.style.width = "100vw";
-      backgroudMenu.style.height = "100vh";
+    if (sideMenu && backgroudMenu) {
+      sideMenu.classList.add("open");
+      backgroudMenu.classList.add("open");
       document.body.style.overflow = "hidden";
     }
   }
@@ -94,22 +104,12 @@
     const sideMenu = document.getElementById("side-menu");
     const backgroudMenu = document.getElementById("backgroudMenu");
     if (sideMenu && backgroudMenu) {
-      sideMenu.style.width = "0";
-      backgroudMenu.style.width = "0vw";
+      sideMenu.classList.remove("open");
+      backgroudMenu.classList.remove("open");
       document.body.style.overflow = "auto";
     }
   }
 
-  // Adjuntar openNav al botón del menú en navBar.astro
-  // Esto se hará en navBar.astro, pero la función está definida aquí
-  // para mantener la lógica del menú lateral junta.
-  // Considera mover esta lógica si prefieres mantenerla separada.
-  // document.addEventListener('DOMContentLoaded', () => {
-  //   const menuButton = document.getElementById('menu-button-placeholder'); // Este ID debe ser el del botón en navBar.astro
-  //   if (menuButton) {
-  //     menuButton.addEventListener('click', openNav);
-  //   }
-  // });
-
-  // Hacer las funciones openNav y closeNav globales para que puedan ser llamadas desde navBar.astro
+  // Close menu when clicking outside
+  document.getElementById("backgroudMenu")?.addEventListener("click", closeNav);
 </script>

@@ -7,7 +7,7 @@ const { tecnologias } = Astro.props;
 ---
 
 <h2 class="subtitulo">Proyectos</h2>
-<div class="Proyectos_container">
+<div class="Proyectos_container" id="proyectos">
   <Proyects
     href="/limonClicker"
     img="/images/Banner lemon clicker.jpg"
@@ -16,7 +16,9 @@ const { tecnologias } = Astro.props;
   <Proyects
     href="/pvzStore"
     img="/images/banner pvz store.jpg"
-    tecnologias={tecnologias ? ["React native", "supabase", "Firebase", "Expo"] : []}
+    tecnologias={tecnologias
+      ? ["React native", "supabase", "Firebase", "Expo"]
+      : []}
   />
   <Proyects
     href="/PvzNews"
@@ -27,16 +29,37 @@ const { tecnologias } = Astro.props;
 
 <style>
   .subtitulo {
-    margin-top: 40px;
+    margin-top: var(--spacing-xl);
     margin-left: 50px;
-    font-family: "montserrat";
+    font-family: var(--font-main);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
   }
+
   .Proyectos_container {
     justify-items: center;
-    box-sizing: content-box;
-    margin: auto;
+    box-sizing: border-box; /* Changed to border-box for better sizing control */
+    margin: var(--spacing-xl) auto;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(350px, 1fr)
+    ); /* Slightly smaller min-width for better responsiveness */
+    gap: var(--spacing-lg);
+    padding: 0 var(--spacing-lg); /* Add padding to container */
+    max-width: 1400px; /* Limit max width */
+  }
+
+  @media screen and (max-width: 600px) {
+    .subtitulo {
+      margin-left: 20px;
+      font-size: 1.5rem;
+    }
+
+    .Proyectos_container {
+      grid-template-columns: 1fr; /* Stack on mobile */
+      padding: 0 20px;
+    }
   }
 </style>

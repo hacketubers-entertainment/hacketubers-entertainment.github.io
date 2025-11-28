@@ -1,0 +1,131 @@
+:root {
+  /* Colors */
+  --color-primary: #4e4376;
+  --color-secondary: #2b5876;
+  --color-accent: #8000cf;
+  --color-background: #ffffff;
+  --color-text: #333333;
+  --color-text-light: #f0f0f0;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  --gradient-text: linear-gradient(to right, #2e0083 0%, #490d9d 21%, #8000cf 100%);
+
+  /* Fonts */
+  --font-main: "montserrat", sans-serif;
+  --font-display: "bebas", sans-serif;
+  --font-fun: "sigmar", cursive;
+
+  /* Spacing */
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 40px;
+
+  /* Borders */
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 20px;
+
+  /* Shadows & Glassmorphism */
+  --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-md: 11px 11px 22px #a1a1a1, -11px -11px 22px #ffffff50;
+  --glass-bg: rgba(255, 255, 255, 0.74);
+  --glass-blur: blur(10px);
+
+  /* Layout */
+  --navbar-height: 80px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "montserrat";
+  src: url("../fonts/Montserrat/Montserrat-VariableFont_wght.ttf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "sigmar";
+  src: url("../fonts/Sigmar/Sigmar-Regular.ttf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "bebas";
+  src: url("../fonts/Bebas_Neue/BebasNeue-Regular.ttf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "EA";
+  src: url("../fonts/ElectronicArtsText-Regular.woff2");
+  font-display: swap;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: #ffffff;
+  background-image:
+    radial-gradient(at 0% 0%, hsla(253, 100%, 96%, 1) 0, transparent 50%),
+    radial-gradient(at 50% 0%, hsla(280, 100%, 94%, 1) 0, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(260, 100%, 92%, 1) 0, transparent 50%);
+  background-size: 200% 200%;
+  animation: gradientBG 15s ease infinite;
+  color: var(--color-text);
+  min-height: 100vh;
+  margin: 0;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gradient-primary);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #191919;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-corner {
+  background: #191919;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) #191919;
+}
+
+.subtitulo {
+  margin-top: var(--spacing-xl);
+  margin-left: 50px;
+  font-family: var(--font-main);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}

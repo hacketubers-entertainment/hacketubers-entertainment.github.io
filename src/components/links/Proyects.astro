@@ -12,9 +12,25 @@ import ContTecnologias from "../containers/contTecnologias.astro";
   <a href={href}>
     <img src={img} alt="imagen" srcset="" />
   </a>
-  {tecnologias && tecnologias.length > 0 ? (
-    <ContTecnologias tecnologias={tecnologias} />
-  ) : null}
+  {
+    tecnologias && tecnologias.length > 0 ? (
+      <ContTecnologias tecnologias={tecnologias} />
+      <style>
+        .proyecto::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 40px;
+          pointer-events: none;
+          box-shadow: inset 0px -30px 30px -10px rgba(255, 255, 255, 0.85);
+          border-radius: 0 0 10px 10px;
+          z-index: 2;
+        }
+      </style>
+    ) : null
+  }
 </div>
 <style>
   .proyecto {
@@ -29,22 +45,11 @@ import ContTecnologias from "../containers/contTecnologias.astro";
     animation-timeline: view();
     animation-range: entry 10% cover 30%;
     max-height: 280px;
-      overflow: hidden; 
-      position: relative; 
+    overflow: hidden;
+    position: relative;
   }
 
-    .proyecto::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 40px;
-      pointer-events: none;
-      box-shadow: inset 0px -30px 30px -10px rgba(255,255,255,0.85);
-      border-radius: 0 0 10px 10px;
-      z-index: 2;
-    }
+
   .proyecto a img {
     width: 100%;
     aspect-ratio: 16/9;

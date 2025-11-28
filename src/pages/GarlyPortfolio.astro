@@ -19,7 +19,11 @@ import ContProyects from "../components/containers/ContProyects.astro";
         un enfoque en experiencias fluidas tanto en web como en dispositivos móviles.
       </p>
       <div>
-        <a class="cvdownload" href="/Documents/Garly Manzanero CV.pdf" download="Garly Manzanero cv.pdf">Descargar CV</a>
+        <a
+          class="cvdownload"
+          href="/Documents/Garly Manzanero CV.pdf"
+          download="Garly Manzanero cv.pdf">Descargar CV</a
+        >
       </div>
       <div class="contactoProfecional">
         <a href="https://github.com/hacketubers-entertainment"
@@ -32,48 +36,146 @@ import ContProyects from "../components/containers/ContProyects.astro";
             class="icono"
           /></a
         >
-        <a href="mailto:garly@example.com"
+        <a href="mailto:garlymanzanero70@gmail.com"
           ><img src="/icons/Gmail.svg" alt="icono gmail" class="icono" /></a
         >
       </div>
     </div>
-    <img src="/figuritas/tocar.svg" alt="stiker" class="stiker tocar" />
-    <img src="/figuritas/estrella.svg" alt="stiker" class="stiker estrella" />
-    <img src="/figuritas/marcador.svg" alt="stiker" class="stiker marcador" />
+    <!-- Wrappers for parallax, Images for animation -->
   </main>
+  <div class="sticker-wrapper tocar" data-speed="0.05">
+    <img
+      src="/figuritas/tocar.svg"
+      alt="stiker"
+      class="stiker"
+      style="--rotation: -8deg;"
+    />
+  </div>
+  <div class="sticker-wrapper estrella" data-speed="0.1">
+    <img
+      src="/figuritas/estrella.svg"
+      alt="stiker"
+      class="stiker"
+      style="--rotation: 20deg;"
+    />
+  </div>
+  <div class="sticker-wrapper marcador" data-speed="0.15">
+    <img
+      src="/figuritas/marcador.svg"
+      alt="stiker"
+      class="stiker"
+      style="--rotation: -20deg;"
+    />
+  </div>
+  <section id="skills" class="skills-section">
+    <h2 class="subtitulo">Habilidades</h2>
+    <div class="skills-grid">
+      <div class="skill-item">JavaScript</div>
+      <div class="skill-item">TypeScript</div>
+      <div class="skill-item">React</div>
+      <div class="skill-item">React Native</div>
+      <div class="skill-item">Astro</div>
+      <div class="skill-item">Node.js</div>
+      <div class="skill-item">Firebase</div>
+      <div class="skill-item">Supabase</div>
+      <div class="skill-item">Git</div>
+      <div class="skill-item">CSS/Tailwind</div>
+    </div>
+  </section>
+
   <section>
     <div>
       <ContProyects tecnologias />
     </div>
   </section>
+
+  <section id="contact" class="contact-section">
+    <h2 class="subtitulo">Contacto</h2>
+    <div class="contact-container">
+      <p>¿Tienes un proyecto en mente o quieres colaborar? ¡Hablemos!</p>
+      <a href="mailto:garlymanzanero70@gmail.com" class="contact-button"
+        >Envíame un correo</a
+      >
+    </div>
+  </section>
 </Layout>
+
+<script>
+  // Smooth Parallax Effect
+  const initParallax = () => {
+    const wrappers = document.querySelectorAll(".sticker-wrapper");
+    let currentScroll = window.scrollY;
+    let targetScroll = window.scrollY;
+
+    // Linear interpolation function
+    const lerp = (start: number, end: number, factor: number) => {
+      return start + (end - start) * factor;
+    };
+
+    const update = () => {
+      // Smoothly interpolate current scroll towards target scroll
+      currentScroll = lerp(currentScroll, targetScroll, 0.1);
+
+      wrappers.forEach((wrapper) => {
+        const speed = parseFloat(wrapper.getAttribute("data-speed") || "0.1");
+        // Move stickers based on smoothed scroll
+        (wrapper as HTMLElement).style.transform =
+          `translateY(${currentScroll * speed}px)`;
+      });
+
+      requestAnimationFrame(update);
+    };
+
+    const handleScroll = () => {
+      targetScroll = window.scrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    update(); // Start the animation loop
+  };
+
+  // Run on load and after view transitions
+  document.addEventListener("astro:page-load", initParallax);
+  // Fallback for initial load
+  initParallax();
+</script>
 
 <style>
   main {
-    padding-top: 100px;
-    height: 80vh;
+    padding-top: 120px; /* Increased padding for navbar */
+    padding-bottom: 50px;
+    min-height: 70vh; /* Reduced from 80vh to bring content closer */
     position: relative;
+    overflow: hidden; /* Fix: Clip stickers that go out of bounds */
+    display: flex; /* Fix: Use Flexbox for better layout */
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    /* gap: 4rem; Removed to allow overlap */
   }
+
   .imagenPerfil {
     position: relative;
     width: 250px;
     height: 250px;
     border-radius: 50%;
     background-color: rgb(195, 132, 255);
-    left: 15vw;
-    top: 22vh;
+    /* Removed absolute positioning magic numbers */
     z-index: 3;
-    animation: contenidoAparece 1s cubic-bezier(.2,.9,.3,1) both;
+    animation: contenidoAparece 1s cubic-bezier(0.2, 0.9, 0.3, 1) both;
     animation-iteration-count: 1;
     transition: all 0.3s ease;
-
+    box-shadow: var(--shadow-md);
   }
+
   .descripcionPerfil {
     background-color: rgba(255, 255, 255, 0.74);
     backdrop-filter: blur(10px);
-    margin: 2vw;
-    font-size: 24px;
-    padding: 2vw 3vw 2vw 3vw;
+    /* Removed absolute positioning magic numbers */
+    margin: 0;
+    margin-left: -15px; /* Overlap with image on desktop */
+    font-size: 20px; /* Adjusted base font size */
+    padding: 2rem;
     box-shadow:
       11px 11px 22px #0000002d,
       -11px -11px 22px #0000003a;
@@ -83,76 +185,88 @@ import ContProyects from "../components/containers/ContProyects.astro";
     animation-range: entry 10% cover 30%;
 
     position: relative;
-    min-height: 30vh;
-    padding: 20px;
     width: 50vw;
-    left: 30vw;
-    bottom: 30vh;
-    font-size: 20px;
+    min-width: 300px;
+    max-width: 600px;
     text-align: justify;
     z-index: 4;
-    animation: contenidoAparece 1s cubic-bezier(.2,.9,.3,1) both;
+    animation: contenidoAparece 1s cubic-bezier(0.2, 0.9, 0.3, 1) both;
     animation-iteration-count: 1;
   }
+
   .contactoProfecional {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
+    margin-top: 1rem;
     display: flex;
-    width: 110px;
-    justify-content: space-between;
+    justify-content: flex-end; /* Align icons to right */
+    gap: 1rem;
   }
-  .cvdownload{
+
+  .cvdownload {
     text-decoration: none;
     color: rgba(69, 11, 136, 1);
     font-size: 16px;
-    padding: 6px;
+    padding: 8px 16px;
     border: 1px solid rgba(69, 11, 136, 1);
     background-color: transparent;
     border-radius: 5px;
     transition: all 0.3s ease;
+    display: inline-block;
+    margin-top: 1rem;
   }
-  .cvdownload:hover{
+  .cvdownload:hover {
     background-color: rgba(69, 11, 136, 0.1);
-    padding: 6px 10px 6px 10px;
   }
   .icono {
     width: 30px;
+    transition: transform 0.2s;
   }
-  .stiker {
+  .icono:hover {
+    transform: scale(1.1);
+  }
+
+  /* WRAPPER STYLES (Positioning & Parallax) */
+  .sticker-wrapper {
     position: absolute;
-    width: 16vw;
-    /* Use a CSS variable for per-sticker rotation so keyframes can animate scale/opacity only */
-    --rotation: -10deg;
-    /* start with rotation + translated down + smaller scale so element is hidden before animation */
-    transform: rotate(var(--rotation)) translateY(10vh) translatex(10vh) scale(0.6);
-    opacity: 0;
-    /* start visually lower using translateY; keyframes will animate translateY + scale + opacity */
-    animation: StikerAparece 1s cubic-bezier(.2,.9,.3,1) both;
-    animation-iteration-count: 1;
+    z-index: 1; /* Behind content (z-index 3 & 4) */
+    will-change: transform;
+    pointer-events: none; /* Prevent stickers from blocking clicks */
   }
-  /* Stagger individual stickers by setting different animation-delay and rotation */
+
   .tocar {
-    left: 5vw;
-    top: 15vh; /* explicit final position so translateY animates relative to this */
-    --rotation: -8deg;
-    animation-delay: 0ms; /* first */
+    left: 5%;
+    top: 15%;
   }
   .estrella {
-    right: 5vw;
-    top: 45vh; /* explicit final position */
-    --rotation: 20deg;
-    animation-delay: 10ms; /* second */
+    right: 5%;
+    top: 50%;
   }
   .marcador {
-    left: 25vw;
-    bottom: 5vh;
-    --rotation: -20deg;
-    animation-delay: 30ms; /* third */
+    left: 20%;
+    bottom: 10%;
   }
+
+  /* IMAGE STYLES (Appearance & Entry Animation) */
+  .stiker {
+    width: 12vw; /* Slightly smaller */
+    min-width: 80px;
+    max-width: 150px;
+    opacity: 0;
+    animation: StikerAparece 1s cubic-bezier(0.2, 0.9, 0.3, 1) both;
+  }
+
+  /* Stagger animations */
+  .tocar .stiker {
+    animation-delay: 0ms;
+  }
+  .estrella .stiker {
+    animation-delay: 100ms;
+  }
+  .marcador .stiker {
+    animation-delay: 300ms;
+  }
+
   @keyframes StikerAparece {
     from {
-      /* start translated down 10vh, keep rotation and animate translateY + scale + opacity */
       transform: rotate(var(--rotation)) translateY(30vh) scale(0.6);
       opacity: 0;
     }
@@ -161,43 +275,151 @@ import ContProyects from "../components/containers/ContProyects.astro";
       opacity: 1;
     }
   }
+
   @keyframes contenidoAparece {
     from {
-      /* start translated down 10vh, keep rotation and animate translateY + scale + opacity */
       opacity: 0;
+      transform: translateY(20px);
     }
     to {
       opacity: 1;
+      transform: translateY(0);
+    }
   }
-}
-@media screen and (max-width: 1000px) {
-      .imagenPerfil {
-        left: 9vw;
-      }
-      .descripcionPerfil {
-        left: 30vw;
-        bottom: 35vh;
-        font-size: 18px;
-        width: 60vw;
-      }
-}
-@media screen and (max-width: 600px) {
-  main{
-    display: block;
-    height: auto;
+
+  /* Skills Section Styles */
+  .skills-section {
+    padding: 2rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
   }
-      .imagenPerfil {
-        position: static;
-        align-self: center;
-      }
-      .descripcionPerfil {
-        width: auto;
-        left: auto;
-        bottom: 5vh;
-        font-size: 1rem;
-      }
-      .stiker {
-        width: 0px;
-      }
-}
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem 50px;
+    justify-items: center;
+  }
+
+  .skill-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    font-weight: 600;
+    color: var(--color-primary);
+    text-align: center;
+    width: 100%;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .skill-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Contact Section Styles */
+  .contact-section {
+    padding: 4rem 0;
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .contact-container {
+    background-color: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    padding: 3rem;
+    border-radius: var(--border-radius-lg);
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .contact-container p {
+    font-size: 1.2rem;
+    color: var(--color-text);
+  }
+
+  .contact-button {
+    display: inline-block;
+    background: var(--gradient-primary);
+    color: white;
+    padding: 12px 32px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .contact-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(78, 67, 118, 0.4);
+  }
+
+  @media screen and (max-width: 1000px) {
+    main {
+      /* gap: 2rem; Removed */
+    }
+    .descripcionPerfil {
+      width: 80vw;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    main {
+      flex-direction: column;
+      padding-top: 100px;
+      /* gap: 2rem; Removed */
+    }
+    .imagenPerfil {
+      width: 200px;
+      height: 200px;
+    }
+    .descripcionPerfil {
+      width: 90vw;
+      padding: 1.5rem;
+      font-size: 1rem;
+      margin-left: 0; /* Reset horizontal margin */
+      margin-top: -15px; /* Overlap vertically on mobile */
+    }
+
+    /* Update mobile styles for wrappers/images */
+    .stiker {
+      width: 80px;
+      opacity: 0.6; /* More transparent on mobile */
+    }
+    .tocar {
+      top: 5%;
+      left: 5%;
+    }
+    .estrella {
+      top: 40%;
+      right: 5%;
+    }
+    .marcador {
+      bottom: 5%;
+      left: auto;
+      right: 10%;
+    }
+
+    .skills-grid {
+      padding: 2rem 20px;
+      grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+    }
+
+    .contact-container {
+      width: 90%;
+      padding: 2rem;
+    }
+  }
 </style>

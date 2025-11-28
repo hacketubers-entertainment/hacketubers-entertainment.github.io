@@ -10,6 +10,11 @@ const { href, img } = Astro.props;
   <img src={img} alt="icono" />
 </a>
 <style>
+  img {
+    animation: scale linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 30%;
+  }
   a {
     padding: 10px;
     border-radius: 10px;
@@ -18,18 +23,25 @@ const { href, img } = Astro.props;
     background: linear-gradient(145deg, #ffffff, #e6e6e6);
     box-shadow:
       15px 15px 16px #999999,
-      -5px -5px 6px #ffffff;
+      -5px -5px 6px #ffffff,
+      inset 0px 0px 0px #999999,
+      inset 0px 0px 0px #ffffff;
+    transition: all 0.1s ease;
     animation: reveal linear both;
     animation-timeline: view();
     animation-range: entry 10% cover 30%;
   }
   a:hover {
     transform: translate(5px, 5px);
-    padding: 10px;
     background: #ffffff;
     box-shadow:
+      0px 0px 0px #999999,
+      0px 0px 0px #ffffff,
       inset 15px 15px 16px #999999,
       inset -15px -15px 16px #ffffff;
+    img {
+      transform: scale(0.9);
+    }
   }
   @keyframes reveal {
     from {
