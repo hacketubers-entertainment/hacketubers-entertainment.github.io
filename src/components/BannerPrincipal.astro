@@ -126,7 +126,9 @@ import ScreenRelative from "./ScreenRelative.astro";
     import gsap from "gsap";
 
     // Wait for everything to load to ensure correct positions
-    window.addEventListener("load", () => {
+    // Start animation as soon as fonts are ready, which is enough for layout stability
+    // This is much faster than window.load which waits for all images
+    document.fonts.ready.then(() => {
       gsap.to(".contenedorRelativo", {
         opacity: 1,
         duration: 0.5,
