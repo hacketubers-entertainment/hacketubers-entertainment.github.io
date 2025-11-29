@@ -260,21 +260,29 @@ const formatNumber = (num: number) => {
 
     @media only screen and (max-width: 600px) {
       .contStatsCard {
-        gap: var(--spacing-md);
+        gap: var(--spacing-sm); /* Reduce gap */
+        flex-wrap: nowrap; /* Force single row */
       }
 
       .stats-card {
-        padding: var(--spacing-md);
-        min-width: 120px;
+        padding: var(--spacing-sm); /* Reduce padding */
+        min-width: unset; /* Remove min-width */
+        flex: 1; /* Distribute space evenly */
+      }
+
+      .stats-card span {
+        font-size: 0.7rem; /* Smaller label */
       }
 
       .stats-card p {
-        font-size: 1.8em;
+        font-size: 1.2rem; /* Smaller numbers */
       }
 
       .logoRedSocial {
-        width: 80px;
-        height: 80px;
+        width: 50px; /* Smaller logo */
+        height: 50px;
+        flex-shrink: 0; /* Prevent logo from squishing too much */
+        margin: 0; /* Reset margin */
       }
     }
   </style>

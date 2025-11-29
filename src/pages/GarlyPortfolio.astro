@@ -144,7 +144,8 @@ import ContProyects from "../components/containers/ContProyects.astro";
   main {
     padding-top: 120px; /* Increased padding for navbar */
     padding-bottom: 50px;
-    min-height: 70vh; /* Reduced from 80vh to bring content closer */
+    min-height: 70vh; /* Fallback */
+    min-height: 70dvh; /* Dynamic viewport height */
     position: relative;
     overflow: hidden; /* Fix: Clip stickers that go out of bounds */
     display: flex; /* Fix: Use Flexbox for better layout */
@@ -386,7 +387,7 @@ import ContProyects from "../components/containers/ContProyects.astro";
       height: 200px;
     }
     .descripcionPerfil {
-      width: 90vw;
+      width: 90%; /* Changed from 90vw to 90% */
       padding: 1.5rem;
       font-size: 1rem;
       margin-left: 0; /* Reset horizontal margin */
@@ -421,5 +422,11 @@ import ContProyects from "../components/containers/ContProyects.astro";
       width: 90%;
       padding: 2rem;
     }
+  }
+</style>
+
+<style is:global>
+  body {
+    overflow-x: hidden;
   }
 </style>
