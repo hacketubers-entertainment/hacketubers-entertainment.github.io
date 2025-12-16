@@ -1,0 +1,88 @@
+---
+interface Props {
+  href: string;
+  img: string;
+  tecnologias?: string[];
+}
+
+const { href, img, tecnologias } = Astro.props;
+import ContTecnologias from "./containers/contTecnologias.astro";
+---
+
+<div class="proyecto">
+  <a href={href}>
+    <img src={img} alt="imagen" srcset="" />
+  </a>
+  {
+    tecnologias && tecnologias.length > 0 ? (
+      <ContTecnologias tecnologias={tecnologias} />
+    ) : null
+  }
+</div>
+
+<style>
+  .proyecto {
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    box-shadow:
+      14px 14px 28px #3a3a3a6e,
+      -4px -4px 18px #ffffff;
+    width: 90%;
+    border-radius: 10px;
+    padding: 10px;
+    animation: revealcontproyect linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 30%;
+    max-height: 280px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .proyecto::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 40px;
+    pointer-events: none;
+    box-shadow: inset 0px -30px 30px -10px rgba(255, 255, 255, 0.85);
+    border-radius: 0 0 10px 10px;
+    z-index: 2;
+  }
+
+  .proyecto a img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    animation: revealproyect linear both;
+    object-fit: cover;
+    animation-timeline: view();
+    animation-range: entry 10% cover 30%;
+  }
+
+  @keyframes revealcontproyect {
+    from {
+      transform: translate(0px, 50px);
+      opacity: 0;
+    }
+    to {
+      transform: translate(0px, 0px);
+      opacity: 1;
+    }
+  }
+
+  @keyframes revealproyect {
+    from {
+      opacity: 0;
+      scale: 0.8;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @media only screen and (max-width: 1035px) {
+    .proyecto {
+      width: 90%;
+    }
+  }
+</style>

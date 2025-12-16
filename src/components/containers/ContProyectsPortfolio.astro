@@ -1,0 +1,92 @@
+---
+import ProjectCard from "../ProjectCard.astro";
+
+interface Props {
+  mostrarTecnologias?: boolean;
+}
+
+const { mostrarTecnologias = true } = Astro.props;
+
+const proyectos = [
+    
+  {
+    href: "/pvzStore",
+    img: "/images/banner pvz store.jpg",
+    tecnologias: mostrarTecnologias
+      ? ["React native", "supabase", "Firebase", "Expo"]
+      : [],
+  },
+  {
+    href: "https://pngkit.page.gd/",
+    img: "/images/pngkit/1.png",
+    tecnologias: mostrarTecnologias
+      ? ["php", "firebase", "SQL"]
+      : [],
+  },
+  {
+    href: "/PvzNews",
+    img: "/images/banner-pvz-news.webp",
+    tecnologias: mostrarTecnologias
+      ? ["react", "firebase", "Supabase", "nextjs"]
+      : [],
+  },
+  {
+    href: "/limonClicker",
+    img: "/images/Banner lemon clicker.jpg",
+    tecnologias: mostrarTecnologias ? ["Godot Engine"] : [],
+  },
+];
+---
+
+<section class="portfolio-section">
+  <h2 class="subtitulo">Mis Proyectos</h2>
+  <div class="proyectos-container" id="portfolio-proyectos">
+    {
+      proyectos.map((proyecto) => (
+        <ProjectCard
+          href={proyecto.href}
+          img={proyecto.img}
+          tecnologias={proyecto.tecnologias}
+        />
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .portfolio-section {
+    width: 100%;
+  }
+
+  .subtitulo {
+    margin-top: var(--spacing-xl);
+    margin-left: 50px;
+    font-family: var(--font-main);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .proyectos-container {
+    justify-items: center;
+    box-sizing: border-box;
+    margin: var(--spacing-xl) auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--spacing-lg);
+    padding: 0 var(--spacing-lg);
+    max-width: 1400px;
+  }
+
+  @media screen and (max-width: 600px) {
+    .subtitulo {
+      margin-left: 20px;
+      font-size: 1.5rem;
+    }
+
+    .proyectos-container {
+      grid-template-columns: 1fr;
+      padding: 0 20px;
+    }
+  }
+</style>
