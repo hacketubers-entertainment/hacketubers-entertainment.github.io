@@ -4,6 +4,7 @@ import ContProyects from "../components/containers/ContProyectsPortfolio.astro";
 ---
 
 <Layout>
+  <div class="cursor-glow"></div>
   <main>
     <img src="/images/foto_perfil.jpg" alt="" class="imagenPerfil" />
     <div class="descripcionPerfil">
@@ -21,8 +22,8 @@ import ContProyects from "../components/containers/ContProyectsPortfolio.astro";
       <div>
         <a
           class="cvdownload"
-          href="/Documents/Garly Manzanero CV.pdf"
-          download="Garly Manzanero cv.pdf">Descargar CV</a
+          href="/Documents/CvGarlyManzanero.pdf"
+          download="CvGarlyManzanero.pdf">Descargar CV</a
         >
       </div>
       <div class="contactoProfecional">
@@ -67,6 +68,13 @@ import ContProyects from "../components/containers/ContProyectsPortfolio.astro";
       style="--rotation: -20deg;"
     />
   </div>
+
+  <section>
+    <div style="z-index: 10;">
+      <ContProyects />
+    </div>
+  </section>
+
   <section id="skills" class="skills-section">
     <h2 class="subtitulo">Habilidades</h2>
     <div class="skills-grid">
@@ -82,12 +90,8 @@ import ContProyects from "../components/containers/ContProyectsPortfolio.astro";
       <div class="skill-item">Supabase</div>
       <div class="skill-item">Git</div>
       <div class="skill-item">SQL</div>
-    </div>
-  </section>
-
-  <section>
-    <div>
-      <ContProyects />
+      <div class="skill-item">Redis</div>
+      <div class="skill-item">Docker</div>
     </div>
   </section>
 
@@ -103,6 +107,35 @@ import ContProyects from "../components/containers/ContProyectsPortfolio.astro";
 </Layout>
 
 <script>
+  // Cursor Glow Effect
+  const initCursorGlow = () => {
+    const cursorGlow = document.querySelector(".cursor-glow") as HTMLElement;
+    if (!cursorGlow) return;
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let glowX = 0;
+    let glowY = 0;
+
+    document.addEventListener("mousemove", (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    const animateGlow = () => {
+      // Smooth interpolation for following effect
+      glowX += (mouseX - glowX) * 0.1;
+      glowY += (mouseY - glowY) * 0.1;
+
+      cursorGlow.style.left = glowX + "px";
+      cursorGlow.style.top = glowY + "px";
+
+      requestAnimationFrame(animateGlow);
+    };
+
+    animateGlow();
+  };
+
   // Smooth Parallax Effect
   const initParallax = () => {
     const wrappers = document.querySelectorAll(".sticker-wrapper");
@@ -138,11 +171,26 @@ import ContProyects from "../components/containers/ContProyectsPortfolio.astro";
 
   // Run on load and after view transitions
   document.addEventListener("astro:page-load", initParallax);
+  document.addEventListener("astro:page-load", initCursorGlow);
   // Fallback for initial load
   initParallax();
+  initCursorGlow();
 </script>
 
 <style>
+  .cursor-glow {
+    position: fixed;
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, rgba(255, 225, 180, 0.311) 0%, rgba(213, 145, 255, 0.19) 40%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+    filter: blur(80px);
+    transform: translate(-50%, -50%);
+    will-change: transform;
+  }
+
   main {
     padding-top: 120px; /* Increased padding for navbar */
     padding-bottom: 50px;
@@ -177,7 +225,7 @@ import ContProyects from "../components/containers/ContProyectsPortfolio.astro";
     /* Removed absolute positioning magic numbers */
     margin: 0;
     margin-left: -15px; /* Overlap with image on desktop */
-    font-size: 20px; /* Adjusted base font size */
+    font-size: 1rem; /* Adjusted base font size */
     padding: 2rem;
     box-shadow:
       11px 11px 22px #0000002d,
@@ -190,7 +238,7 @@ import ContProyects from "../components/containers/ContProyectsPortfolio.astro";
     position: relative;
     width: 50vw;
     min-width: 300px;
-    max-width: 600px;
+    max-width: 700px;
     text-align: justify;
     z-index: 4;
     animation: contenidoAparece 1s cubic-bezier(0.2, 0.9, 0.3, 1) both;
@@ -230,7 +278,7 @@ import ContProyects from "../components/containers/ContProyectsPortfolio.astro";
   /* WRAPPER STYLES (Positioning & Parallax) */
   .sticker-wrapper {
     position: absolute;
-    z-index: 1; /* Behind content (z-index 3 & 4) */
+    z-index: 0; /* Behind content (z-index 3 & 4) */
     will-change: transform;
     pointer-events: none; /* Prevent stickers from blocking clicks */
   }

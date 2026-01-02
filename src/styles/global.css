@@ -68,6 +68,7 @@
 }
 
 body {
+  cursor: url('../cursor2.webp') 10 10, auto;
   font-family: var(--font-main);
   background-color: #ffffff;
   background-image:
@@ -128,4 +129,12 @@ body {
   font-size: 2rem;
   font-weight: 700;
   color: var(--color-primary);
+}
+
+@media screen and (max-width: 600px) {
+  .subtitulo {
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 1.5rem;
+  }
 }
