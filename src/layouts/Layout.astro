@@ -6,6 +6,7 @@ import Footer from "../components/Footer.astro";
 interface Props {
   title?: string;
   description?: string;
+  icon?: string;
   image?: string;
   withBackground?: boolean;
 }
@@ -13,6 +14,7 @@ interface Props {
 const {
   title = "Hacketubers Entertainment",
   description = "Desarrollador de Aplicaciones y Videojuegos Indie. Creamos experiencias únicas.",
+  icon = "/logoico.ico",
   image = "/logo.png",
   withBackground = true,
 } = Astro.props;
@@ -23,7 +25,7 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/logoico.ico" />
+    <link rel="icon" type="image" href={icon} />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
