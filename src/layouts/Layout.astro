@@ -9,6 +9,7 @@ interface Props {
   icon?: string;
   image?: string;
   withBackground?: boolean;
+  backgroundImageUrl?: string;
 }
 
 const {
@@ -17,6 +18,7 @@ const {
   icon = "/logoico.ico",
   image = "/logo.png",
   withBackground = true,
+  backgroundImageUrl,
 } = Astro.props;
 ---
 
@@ -48,7 +50,7 @@ const {
     <SideMenu />
     <!-- Añadir SideMenu al layout -->
     <slot />
-    <Footer withBackground={withBackground} />
+    <Footer withBackground={withBackground} backgroundImageUrl={backgroundImageUrl} />
   </body>
 </html>
 

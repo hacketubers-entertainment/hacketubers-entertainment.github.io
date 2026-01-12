@@ -1,9 +1,10 @@
 ---
 interface Props {
     withBackground?: boolean;
+    backgroundImageUrl?: string;
 }
 
-const { withBackground = false } = Astro.props;
+const { withBackground = false, backgroundImageUrl } = Astro.props;
 ---
 
 <!-- Define the clipPath SVG (hidden) -->
@@ -23,7 +24,7 @@ const { withBackground = false } = Astro.props;
     </defs>
 </svg>
 
-<footer class:list={["footer-container", { "with-bg": withBackground }]}>
+<footer style={`background-image: ${backgroundImageUrl ? `url(${backgroundImageUrl})` : "none"};`} class:list={["footer-container", { "with-bg": withBackground }]}>
     <div class="footer-content">
         <div class="footer-grid">
             <div class="brand-section">

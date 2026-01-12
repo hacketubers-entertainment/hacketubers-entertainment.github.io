@@ -1,0 +1,100 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image: string;
+  imageAlt?: string;
+  imagePosition?: 'left' | 'right';
+}
+
+const { 
+  title, 
+  description, 
+  image, 
+  imageAlt = 'Caracteristica',
+  imagePosition = 'right'
+} = Astro.props;
+---
+
+<div class={`caracteristica-container ${imagePosition}`}>
+  <div class="contenido">
+    <h3 class="titulo">{title}</h3>
+    <p class="descripcion">{description}</p>
+  </div>
+  
+  <img 
+    src={image} 
+    alt={imageAlt} 
+    class="imagen-caracteristica"
+  />
+</div>
+
+<style>
+  .caracteristica-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    margin: 30px 0;
+  }
+
+  .caracteristica-container.right {
+    flex-direction: row;
+  }
+
+  .caracteristica-container.left {
+    flex-direction: row-reverse;
+  }
+
+  .contenido {
+    flex: 1;
+    min-width: 300px;
+  }
+
+  .titulo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: rgb(70, 54, 40);
+    margin: 0 0 15px 0;
+    font-family: "Black-Regular", sans-serif;
+  }
+
+  .descripcion {
+    font-size: 1.1rem;
+    color: rgb(70, 54, 40);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .imagen-caracteristica {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.3));
+    object-fit: cover;
+  }
+
+  /* Responsivo */
+  @media only screen and (min-width: 0px) and (max-width: 854px) {
+    .caracteristica-container {
+      flex-direction: column !important;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .imagen-caracteristica {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .titulo {
+      font-size: 1.5rem;
+    }
+
+    .descripcion {
+      font-size: 1rem;
+    }
+  }
+</style>
