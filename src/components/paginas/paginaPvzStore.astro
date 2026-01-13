@@ -33,8 +33,10 @@ const imagenesCarrusel = [
 <main>
   <div class="contenedor_principal">
     <h2 id="titulo_app">Comparte contenido de Plantas vs Zombies</h2>
-    <p id="subtitulo_app">Pvz store es una aplicacion comunitaria para compartir todo tipo de
-      contenido de Plantas contra zombies.</p>
+    <p id="subtitulo_app">
+      Pvz store es una aplicacion comunitaria para compartir todo tipo de
+      contenido de Plantas contra zombies.
+    </p>
     <div id="img_info">
       <img
         id="imagen_principal"
@@ -42,19 +44,26 @@ const imagenesCarrusel = [
         alt=""
         srcset=""
       />
-      <form id="formPreregistro" action="https://formspree.io/f/xpqqzzby" method="post">
+      <form
+        id="formPreregistro"
+        action="https://formspree.io/f/xpqqzzby"
+        method="post"
+      >
         <h3>Preregistrate ahora</h3>
         <div>
-          <input name="email" id="emailInput" type="email" placeholder="Escribe tu correo electronico" />
-          <button id="submitButton" type="submit" >{">"}</button>
+          <input
+            name="email"
+            id="emailInput"
+            type="email"
+            placeholder="Escribe tu correo electronico"
+          />
+          <button id="submitButton" type="submit">{">"}</button>
         </div>
       </form>
     </div>
   </div>
 </main>
 <section>
-  
-
   <CharacteristicCard
     title="Crea y comparte Niveles modificados"
     description="Comparte tus niveles modificados de pvz2 con otros usuarios de la comunidad PvZ."
@@ -68,9 +77,8 @@ const imagenesCarrusel = [
     description="Crea un perfil y comparte tu contenido con otros usuarios de la comunidad PvZ."
     image="/images/pvzStore/Mackups/mackupsocialpvzstore.png"
     imageAlt="Icono de compartir contenido"
-    imagePosition="left" 
+    imagePosition="left"
   />
-
 
   <CharacteristicCard
     title="Mantente al dia con las noticias de PvZ"
@@ -89,9 +97,9 @@ const imagenesCarrusel = [
 
   <div id="cont_presentacion">
     <p id="presentacion">
-      Creada originalmente para compartir niveles modificados y recursos de estos,
-      ahora nos enfocamos en compartir todo tipo de contenido relacionado con la saga,
-      como mods, niveles, recursos, musica, etc.<br />
+      Creada originalmente para compartir niveles modificados y recursos de
+      estos, ahora nos enfocamos en compartir todo tipo de contenido relacionado
+      con la saga, como mods, niveles, recursos, musica, etc.<br />
       Nuestro objetivo actual es recrear la app desde cero para mejorar la experiencia
       del usuario y añadir nuevas funcionalidades.<br />
     </p>
@@ -102,7 +110,7 @@ const imagenesCarrusel = [
   <div id="cont_botones_descarga">
     <h2>Proximamente en:</h2>
     <GooglePlay
-      Link="/"
+      Link="https://play.google.com/store/apps/details?id=com.hacketubers_entertainment.pvzstore"
     />
   </div>
 </section>
@@ -216,7 +224,7 @@ const imagenesCarrusel = [
     font-size: 16px;
     cursor: pointer;
   }
-  
+
   #img_info {
     display: flex;
   }
@@ -254,7 +262,7 @@ const imagenesCarrusel = [
     color: white;
     font-size: 14px;
   }
-  @media only screen and (min-width: 856px) and (max-width: 1050px){
+  @media only screen and (min-width: 856px) and (max-width: 1050px) {
     #titulo_app {
       font-size: 3rem;
     }
@@ -299,7 +307,7 @@ const imagenesCarrusel = [
       position: static;
       width: 100%;
       margin: auto;
-      margin-top: 30px
+      margin-top: 30px;
     }
     #boton_playstore {
       width: 70vw;
