@@ -32,10 +32,10 @@ const imagenesCarrusel = [
 
 <main>
   <div class="contenedor_principal">
-    <h2 id="titulo_app">Comparte contenido de Plantas vs Zombies</h2>
+    <h2 id="titulo_app">Comparte contenido de Videojuegos</h2>
     <p id="subtitulo_app">
-      Pvz store es una aplicacion comunitaria para compartir todo tipo de
-      contenido de Plantas contra zombies.
+      Pea store es una aplicacion comunitaria para compartir todo tipo de
+      contenido de Videojuegos.
     </p>
     <div id="img_info">
       <img
@@ -44,29 +44,18 @@ const imagenesCarrusel = [
         alt=""
         srcset=""
       />
-      <form
-        id="formPreregistro"
-        action="https://formspree.io/f/xpqqzzby"
-        method="post"
-      >
-        <h3>Preregistrate ahora</h3>
-        <div>
-          <input
-            name="email"
-            id="emailInput"
-            type="email"
-            placeholder="Escribe tu correo electronico"
-          />
-          <button id="submitButton" type="submit">{">"}</button>
-        </div>
-      </form>
     </div>
+    <div id="googleplay_button">
+    <GooglePlay
+      Link="https://play.google.com/store/apps/details?id=com.hacketubers_entertainment.pvzstore"
+    />
+  </div>
   </div>
 </main>
 <section>
   <CharacteristicCard
     title="Crea y comparte Niveles modificados"
-    description="Comparte tus niveles modificados de pvz2 con otros usuarios de la comunidad PvZ."
+    description="Comparte tus niveles modificados de videojuegos con otros usuarios de la comunidad."
     image="/images/pvzStore/Mackups/mackupnivelespvzstore.png"
     imageAlt="Icono de compartir contenido"
     imagePosition="right"
@@ -74,7 +63,7 @@ const imagenesCarrusel = [
 
   <CharacteristicCard
     title="Una aplicacion social comunitaria"
-    description="Crea un perfil y comparte tu contenido con otros usuarios de la comunidad PvZ."
+    description="Crea un perfil y comparte tu contenido con otros usuarios de la comunidad."
     image="/images/pvzStore/Mackups/mackupsocialpvzstore.png"
     imageAlt="Icono de compartir contenido"
     imagePosition="left"
@@ -82,14 +71,14 @@ const imagenesCarrusel = [
 
   <CharacteristicCard
     title="Mantente al dia con las noticias de PvZ"
-    description="Sigue las ultimas noticias y actualizaciones sobre la saga de Plantas vs Zombies."
+    description="Sigue las ultimas noticias y actualizaciones sobre videojuegos."
     image="/images/pvzStore/Mackups/mackupnoticiaspvzstore.png"
     imageAlt="Icono de compartir contenido"
     imagePosition="right"
   />
   <CharacteristicCard
     title="Personaliza tu experiencia"
-    description="Personaliza tu experiencia en PvZ Store con temas, colores y configuraciones personalizadas."
+    description="Personaliza tu experiencia en Pea Store con temas, colores y configuraciones personalizadas."
     image="/images/pvzStore/Mackups/mackuppersonalizacionpvzstore.png"
     imageAlt="Icono de personalización"
     imagePosition="left"
@@ -108,7 +97,6 @@ const imagenesCarrusel = [
   <Carrusel images={imagenesCarrusel} />
 
   <div id="cont_botones_descarga">
-    <h2>Proximamente en:</h2>
     <GooglePlay
       Link="https://play.google.com/store/apps/details?id=com.hacketubers_entertainment.pvzstore"
     />
@@ -191,11 +179,10 @@ const imagenesCarrusel = [
     -webkit-text-stroke-width: 0.2px;
     -webkit-text-stroke-color: rgb(255, 255, 255);
   }
-  #formPreregistro {
+  #googleplay_button {
     position: relative;
     top: 60%;
-    left: 20%;
-    background-color: rgb(255, 255, 255);
+    left: 1%;
     backdrop-filter: blur(5px);
     padding: 10px;
     padding-bottom: 30px;
@@ -205,25 +192,10 @@ const imagenesCarrusel = [
     display: flex;
     flex-direction: column;
     gap: 5px;
-    width: 310px;
+    width: 200px;
     height: fit-content;
   }
-  #emailInput {
-    padding: 5px;
-    border-radius: 5px;
-    border: 0px;
-    font-size: 16px;
-    width: 220px;
-  }
-  #submitButton {
-    padding: 5px 10px;
-    border-radius: 50%;
-    border: none;
-    background-color: rgb(143, 35, 214);
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-  }
+  
 
   #img_info {
     display: flex;
@@ -239,14 +211,6 @@ const imagenesCarrusel = [
   }
   #cont_presentacion {
     align-content: center;
-  }
-  #presentacion {
-    border-radius: 10px;
-    padding: 3vw 5% 3vw 5%;
-    background-color: rgba(255, 255, 255, 0.514);
-    backdrop-filter: blur(5px);
-    color: rgb(70, 54, 40);
-    font-size: 22px;
   }
 
   #cont_botones_descarga {
@@ -280,18 +244,18 @@ const imagenesCarrusel = [
       text-align: center;
       padding-top: 20px;
       padding-bottom: 20px;
-      gap: 40px;
+      gap: 10px;
     }
     #titulo_app {
       font-size: 2rem;
       text-align: center;
-      margin-top: 70px;
+      margin-top: 60px;
       position: static;
     }
     #subtitulo_app {
       font-size: 1rem;
       text-align: center;
-      margin-top: 10px;
+      margin-top: 0px;
       position: static;
     }
     #img_info {
@@ -301,13 +265,13 @@ const imagenesCarrusel = [
       position: static;
       bottom: 0;
       right: 0;
-      width: 300px;
+      width: 200px;
     }
-    #formPreregistro {
+    #googleplay_button {
       position: static;
       width: 100%;
-      margin: auto;
-      margin-top: 30px;
+      margin: 0px;
+      margin-top: 0px;
     }
     #boton_playstore {
       width: 70vw;
