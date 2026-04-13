@@ -6,12 +6,13 @@ const channelId = "UCecw_15QeIhpz4xO_lcKeng";
 
 // URLs de los endpoints
 const channelUrl = `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${apiKey}`;
-const searchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=viewCount&type=video&maxResults=4&key=${apiKey}`;
+const videoIds = "m8oGonRKasQ,xItHVqGfwXI,88g9U684oCk"; // IDs de videos seleccionados manualmente
+const videoUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${videoIds}&key=${apiKey}`;
 
 // Variables para almacenar los datos
 let subscriberCount = 0;
 let totalViews = 0;
-let topVideos = [];
+let topVideos: Array<{ id: string; snippet: any; statistics: any }> = [];
 
 try {
   // 1. Obtener estadísticas del canal (vistas totales y suscriptores)
@@ -21,20 +22,10 @@ try {
   subscriberCount = stats.subscriberCount;
   totalViews = stats.viewCount;
 
-  // 2. Buscar los videos más vistos
-  const searchRes = await fetch(searchUrl);
-  const searchData = await searchRes.json();
-  const videoIds = searchData.items
-    .map((video: any) => video.id.videoId)
-    .join(",");
-
-  // 3. Obtener las estadísticas detalladas (likes, vistas) de los videos
-  if (videoIds) {
-    const videoUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${videoIds}&key=${apiKey}`;
-    const videoRes = await fetch(videoUrl);
-    const videoData = await videoRes.json();
-    topVideos = videoData.items;
-  }
+  // 2. Obtener las estadísticas detalladas (likes, vistas) de los videos seleccionados manualmente
+  const videoRes = await fetch(videoUrl);
+  const videoData = await videoRes.json();
+  topVideos = videoData.items;
 } catch (error) {
   console.error("Error al obtener datos de YouTube:", error);
 }
@@ -64,7 +55,7 @@ const formatNumber = (num: number) => {
       href="https://www.youtube.com/channel/UCecw_15QeIhpz4xO_lcKeng"
       target="_blank"
     >
-      <img src="/images/youtube.png" alt="logo yt" />
+      <img src="/images/youtube.png" alt="logo yt" loading="lazy" />
     </a>
     <div class="stats-card">
       <span>Vistas Totales</span>
@@ -112,7 +103,7 @@ const formatNumber = (num: number) => {
       href="https://www.tiktok.com/@hacketubersyt"
       target="_blank"
     >
-      <img src="/images/Tiktok.webp" alt="logo tiktok" />
+      <img src="/images/Tiktok.webp" alt="logo tiktok" loading="lazy" />
     </a>
     <div class="stats-card">
       <span>Likes Totales</span>
