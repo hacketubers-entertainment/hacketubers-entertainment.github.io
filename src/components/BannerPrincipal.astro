@@ -12,6 +12,7 @@ import ScreenRelative from "./ScreenRelative.astro";
 </script>
 <ScreenRelative />
 <div class="contenedor-imagen-principal">
+  
   <div class="contenido-informacion">
     <img
       class="logotipoHE"
@@ -26,12 +27,28 @@ import ScreenRelative from "./ScreenRelative.astro";
       <button onclick="verMas()" class="ver-mas">Ver Información</button>
     </div>
   </div>
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    class="video-fondo"
+    src="/videos/VideoBanner.webm"
+  ></video>
   <style>
+    .video-fondo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
     .contenedor-imagen-principal {
       overflow: hidden;
       width: 100%;
       height: 80vh; /* Increased height for better impact */
-      background-image: url("/fondoCuadros.webp");
       background-repeat: no-repeat;
       background-size: cover; /* Ensure it covers the area */
       background-position: center;
@@ -49,13 +66,13 @@ import ScreenRelative from "./ScreenRelative.astro";
       position: relative; /* Changed from absolute to relative for flex centering */
       margin-left: 5vw; /* Use margin instead of left */
       color: var(--color-text-light);
-      background-color: rgba(0, 0, 0, 0.4); /* Darker glass */
-      backdrop-filter: blur(15px);
+      background-color: rgba(0, 0, 0, 0.275); /* Darker glass */
+      backdrop-filter: blur(10px);
       border-radius: var(--border-radius-lg);
       padding: var(--spacing-xl);
       max-width: 500px;
       border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      box-shadow: 0 8px 32px 0 rgba(27, 3, 57, 0.37);
     }
 
     .logotipoHE {
@@ -114,6 +131,7 @@ import ScreenRelative from "./ScreenRelative.astro";
       .contenedor-imagen-principal {
         justify-content: center;
         align-items: center;
+        height: 70vh;
       }
       .contenido-informacion {
         margin: 0 20px;
@@ -124,6 +142,8 @@ import ScreenRelative from "./ScreenRelative.astro";
 
   <script>
     import gsap from "gsap";
+    scrollTo(0, 0);
+    document.body.style.overflow = "hidden";
 
     // Wait for everything to load to ensure correct positions
     // Start animation as soon as fonts are ready, which is enough for layout stability
@@ -144,7 +164,7 @@ import ScreenRelative from "./ScreenRelative.astro";
         onStart: animateLogo,
         onComplete: eliminarScreen,
       });
-      // Removed the separate opacity animation for .logo as it's handled in animateLogo or redundant
+      document.body.style.overflow = "auto"; // Re-enable scrolling after animation
     }
 
     function animateLogo() {
