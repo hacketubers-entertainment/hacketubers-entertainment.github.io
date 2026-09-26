@@ -9,7 +9,7 @@
 
   /* Gradients */
   --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-  --gradient-text: linear-gradient(to right, #2e0083 0%, #490d9d 21%, #8000cf 100%);
+  --gradient-text: linear-gradient(to right, #2e0083 0%, #490d9d 21%, #5f009a 100%);
 
   /* Fonts */
   --font-main: "montserrat", sans-serif;
