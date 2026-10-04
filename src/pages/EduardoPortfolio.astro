@@ -1,0 +1,134 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Proyects from "../components/links/Proyects.astro";
+---
+
+<Layout>
+  <img src="/images/Eduardo/foto_perfil_Eduardo.png" id="fotoPerfil" />
+  <img src="/images/Eduardo/BannerLeleStudios.png" id="banner" />
+  <div id="infoBasica">
+    <h1>Eduardo Marin Gomez</h1>
+    <span>Animador y diseñador</span>
+    <div class="contactoProfecional">
+        <a href="https://lelestudios.itch.io/"
+          ><img src="/icons/Itchio.svg" alt="icono github" class="icono" /></a
+        >
+        <a href="https://www.youtube.com/@LeleStudiosTM"
+          ><img
+            src="/icons/youtube.svg"
+            alt="icono linkedin"
+            class="icono"
+          /></a
+        >
+        <a href="mailto:correoeduardomarin@gmail.com"
+          ><img src="/icons/Gmail.svg" alt="icono gmail" class="icono" /></a
+        >
+      </div>
+  </div>
+  <h2 class="subtitulo">Trabajo en Hacketubers Entertainment</h2>
+  <div id="contLooties">
+    <img class="lootie" src="/images/Eduardo/margarita.gif">
+    <img class="lootie" src="/images/Eduardo/pea2.gif">
+    <img class="lootie" src="/images/Eduardo/pea1.gif">
+    <img class="lootie" src="/images/Eduardo/brote1.png">
+    <img class="lootie" src="/images/Eduardo/brote2.png">
+    <img class="lootie" src="/images/Eduardo/brote3.png">
+  </div>
+  <div class="Proyectos_container">
+    <Proyects
+      href="/pvzStore"
+      img="/images/banner pvz store.png"
+    />
+  </div>
+  <h2 class="subtitulo">Mas de Eduardo</h2>
+  <div class="Proyectos_container">
+    <Proyects
+      href="https://lelestudios.itch.io/fall"
+      img="/images/Eduardo/Fall.png"
+    />
+    <Proyects
+      href="https://lelestudios.itch.io/lele-armor"
+      img="/images/Eduardo/LeleArmor.png"
+    />
+  </div>
+</Layout>
+
+<style>
+  #banner {
+    width: 100vw;
+  }
+  #fotoPerfil {
+    border-radius: 100%;
+    width: 200px;
+    border: 2px solid white;
+    position: absolute;
+    top: 20vw;
+    left: 10px;
+  }
+  #infoBasica {
+    margin-left: 220px;
+  }
+  .contactoProfecional {
+    margin-top: 10px;
+    display: flex;
+    gap: 1rem;
+  }
+  .icono {
+    width: 30px;
+    transition: transform 0.2s;
+  }
+  .icono:hover {
+    transform: scale(1.1);
+  }
+  .subtitulo {
+    margin-top: var(--spacing-xl);
+    margin-left: 50px;
+    margin-bottom: 0px;
+    font-family: var(--font-main);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    z-index: 20;
+  }
+  #contLooties{
+    display: flex;
+    overflow: auto;
+  }
+  .lootie{
+    width: 250px;
+  }
+  .Proyectos_container {
+    justify-items: center;
+    box-sizing: content-box;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 20px;
+  }
+
+  @media screen and (max-width: 700px) {
+    #banner {
+    margin-top: 50px;
+  }
+    #fotoPerfil {
+    border-radius: 100%;
+    width: 190px;
+    top: 30vw;
+    left: 5px;
+  }
+  #infoBasica {
+    margin-left: 200px;
+    margin-bottom: 5%;
+  }
+  h1{
+    font-size: 1.5rem;
+  }
+    .subtitulo {
+      margin-left: 20px;
+      font-size: 1.5rem;
+    }
+    .proyectos-container {
+      grid-template-columns: 1fr;
+      padding: 0 20px;
+    }
+  }
+</style>

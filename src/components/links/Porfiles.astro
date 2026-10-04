@@ -1,0 +1,72 @@
+---
+interface Props {
+  href: string;
+  img: string;
+  nombre: string;
+}
+const { href, img, nombre } = Astro.props;
+---
+<div>
+    <div class="porfile">
+        <a href={href}>
+            <img src={img} alt="imagen" srcset="" />
+        </a>
+    </div>
+    <h4 class="nombre">{nombre}</h4>
+</div>
+
+<style>
+  .porfile {
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    box-shadow:
+      14px 14px 28px #3a3a3a6e,
+      -4px -4px 18px #ffffff;
+    width: 20vw;
+    height: 20vw;
+    border-radius: 50%;
+    animation: revealcontproyect linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 30%;
+    overflow: hidden;
+    position: relative;
+  }
+
+
+  .porfile a img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16/9;
+    animation: revealproyect linear both;
+    object-fit: cover;
+    animation-timeline: view();
+    animation-range: entry 10% cover 30%;
+  }
+  @keyframes revealcontproyect {
+    from {
+      transform: translate(0px, 50px);
+      opacity: 0;
+    }
+    to {
+      transform: translate(0px, 0px);
+      opacity: 1;
+    }
+  }
+  @keyframes revealproyect {
+    from {
+      opacity: 0;
+      scale: 0.8;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+    .nombre {
+        text-align: center;
+    }
+  @media only screen and (max-width: 535px) {
+    .porfile {
+      width: 60vw;
+    height: 60vw;
+    }
+  }
+</style>

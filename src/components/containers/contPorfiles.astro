@@ -1,0 +1,29 @@
+---
+import Porfiles from "../links/Porfiles.astro"
+---
+
+<div style="height: 100px;"></div>
+<h1 class="Titulo">Nuestro Equipo</h1>
+<div class="Proyectos_container">
+  <Porfiles href="/GarlyPortfolio" img="/images/foto_perfil.jpg" nombre="Garly Manzanero"/>
+  <Porfiles href="/EduardoPortfolio" img="/images/Eduardo/foto_perfil_Eduardo.png" nombre="Eduardo Marin"/>
+</div>
+
+<style>
+  .Titulo {
+    text-align: center;
+    font-family: "EA";
+  }
+  .subtitulo {
+    margin-top: 40px;
+    margin-left: 50px;
+    font-family: "montserrat";
+  }
+  .Proyectos_container {
+    justify-items: center;
+    box-sizing: content-box;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 20px;
+  }
+</style>
