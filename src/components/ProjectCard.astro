@@ -80,9 +80,15 @@ import ContTecnologias from "./containers/contTecnologias.astro";
     }
   }
 
-  @media only screen and (max-width: 1035px) {
+  @media only (min-width: 800px) and (max-width: 1035px) {
     .proyecto {
       width: 90%;
+    }
+  }
+
+  @media only (min-width: 500px) and (max-width: 800px) {
+    .proyecto {
+      width: 50vw;
     }
   }
 </style>
