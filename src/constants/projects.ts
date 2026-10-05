@@ -63,3 +63,14 @@ export const allProjects = [
     tecnologias: ["Godot Engine", "firebase"]
   },
 ];
+
+export const projectsEduardo = [
+  {
+    href: "https://lelestudios.itch.io/fall",
+    img: "/images/Eduardo/Fall.png",
+  },
+  {
+    href: "https://lelestudios.itch.io/lele-armor",
+    img: "/images/Eduardo/LeleArmor.png",
+  },
+];

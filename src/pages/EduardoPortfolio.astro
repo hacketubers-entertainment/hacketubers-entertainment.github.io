@@ -1,6 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Proyects from "../components/links/Proyects.astro";
+import ContProyects from "../components/containers/ContProyects.astro";
+import {projectsEduardo, allProjects} from "../constants/projects.ts"
+const proyectos = projectsEduardo
+const participacion = allProjects[0]
 ---
 
 <Layout>
@@ -34,23 +38,10 @@ import Proyects from "../components/links/Proyects.astro";
     <img class="lootie" src="/images/Eduardo/brote2.png">
     <img class="lootie" src="/images/Eduardo/brote3.png">
   </div>
-  <div class="Proyectos_container">
-    <Proyects
-      href="/pvzStore"
-      img="/images/banner pvz store.png"
-    />
-  </div>
+
+  <ContProyects projectList={[participacion]}/>
   <h2 class="subtitulo">Mas de Eduardo</h2>
-  <div class="Proyectos_container">
-    <Proyects
-      href="https://lelestudios.itch.io/fall"
-      img="/images/Eduardo/Fall.png"
-    />
-    <Proyects
-      href="https://lelestudios.itch.io/lele-armor"
-      img="/images/Eduardo/LeleArmor.png"
-    />
-  </div>
+  <ContProyects projectList={proyectos}/>
 </Layout>
 
 <style>
@@ -125,10 +116,6 @@ import Proyects from "../components/links/Proyects.astro";
     .subtitulo {
       margin-left: 20px;
       font-size: 1.5rem;
-    }
-    .proyectos-container {
-      grid-template-columns: 1fr;
-      padding: 0 20px;
     }
   }
     @media screen and (max-width: 500px) {
