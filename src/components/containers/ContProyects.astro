@@ -1,13 +1,56 @@
 ---
-// Esta es una referencia al componente ContProyectsUser
-// Mantiene retrocompatibilidad con el código anterior
-import ContProyectsUser from "./ContProyectsUser.astro";
-
+import Proyects from "../links/Proyects.astro";
 interface Props {
-  tecnologias?: boolean;
+  projectList: {
+    href: string;
+    img: string;
+  }[];
+  titulo? : string;
+  subtitulo? : string;
 }
-
-const { tecnologias } = Astro.props;
+const { projectList } = Astro.props;
+const { titulo } = Astro.props;
+const { subtitulo } = Astro.props;
 ---
 
-<ContProyectsUser mostrarTecnologias={tecnologias} />
+<div style="height: 100px;"></div>
+{
+  titulo? (
+    <h1 class="Titulo">{titulo}</h1>
+  ) : null
+}
+{
+  subtitulo? (
+    <h2 class="subtitulo">{subtitulo}</h2>
+  ) : null
+}
+<div class="Proyectos_container">
+  {
+    projectList.map((proyecto) => (
+      <Proyects href={proyecto.href} img={proyecto.img} />
+    ))
+  }
+</div>
+
+<style>
+  .Titulo {
+    text-align: center;
+    font-family: "EA";
+  }
+  .Proyectos_container {
+    justify-items: center;
+    box-sizing: content-box;
+    margin: 0px 3vw 0px 3vw;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+  }
+  
+  @media screen and (max-width: 400px) {
+    .Proyectos_container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>

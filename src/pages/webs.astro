@@ -1,8 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import ContWebs from "../components/containers/contWebs.astro";
+import ContProyects from "../components/containers/ContProyects.astro";
+import { webs } from "../constants/projects";
 ---
 
 <Layout>
-  <ContWebs />
+  <ContProyects titulo="Webs" projectList={webs} />
 </Layout>

@@ -1,8 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import ContApps from "../components/containers/contApps.astro";
+import ContProyects from "../components/containers/ContProyects.astro";
+import { apps } from "../constants/projects";
 ---
 
 <Layout>
-  <ContApps />
+  <ContProyects titulo="Apps" projectList={apps} />
 </Layout>

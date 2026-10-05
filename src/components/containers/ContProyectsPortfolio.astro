@@ -1,48 +1,9 @@
 ---
 import ProjectCard from "../ProjectCard.astro";
+import { allProjects } from "../../constants/projects.ts"
 
-interface Props {
-  mostrarTecnologias?: boolean;
-}
+const proyectos = allProjects
 
-const { mostrarTecnologias = true } = Astro.props;
-
-const proyectos = [
-    
-  {
-    href: "/pvzStore",
-    img: "/images/banner pvz store.png",
-    tecnologias: mostrarTecnologias
-      ? ["React native", "typescript", "supabase", "Firebase"]
-      : [],
-  },
-  {
-    href: "https://pvzstoreapi-615256524773.northamerica-south1.run.app/",
-    img: "/images/PvZStoreAPI.png",
-    tecnologias: mostrarTecnologias
-      ? ["typescript", "docker", "postgres", "redis", "express"]
-      : [],
-  },
-  {
-    href: "https://pngkit.page.gd/",
-    img: "/images/pngkit/1.png",
-    tecnologias: mostrarTecnologias
-      ? ["php", "firebase", "SQL"]
-      : [],
-  },
-  {
-    href: "/PvzNews",
-    img: "/images/banner-pvz-news.webp",
-    tecnologias: mostrarTecnologias
-      ? ["react", "firebase", "Supabase", "nextjs"]
-      : [],
-  },
-  {
-    href: "/limonClicker",
-    img: "/images/Banner lemon clicker.jpg",
-    tecnologias: mostrarTecnologias ? ["Godot Engine", "firebase"] : [],
-  },
-];
 ---
 
 <section class="portfolio-section">

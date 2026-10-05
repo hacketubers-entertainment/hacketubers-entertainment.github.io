@@ -2,35 +2,13 @@
 interface Props {
   href: string;
   img: string;
-  tecnologias?: string[];
 }
-const { href, img, tecnologias } = Astro.props;
-import ContTecnologias from "../containers/contTecnologias.astro";
+const { href, img } = Astro.props;
 ---
-
 <div class="proyecto">
   <a href={href}>
     <img src={img} alt="imagen" srcset="" />
   </a>
-  {
-    tecnologias && tecnologias.length > 0 ? (
-      <ContTecnologias tecnologias={tecnologias} />
-      <style>
-        .proyecto::after {
-          content: "";
-          position: absolute;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          height: 40px;
-          pointer-events: none;
-          box-shadow: inset 0px -30px 30px -10px rgba(255, 255, 255, 0.85);
-          border-radius: 0 0 10px 10px;
-          z-index: 2;
-        }
-      </style>
-    ) : null
-  }
 </div>
 <style>
   .proyecto {
@@ -77,13 +55,14 @@ import ContTecnologias from "../containers/contTecnologias.astro";
       opacity: 1;
     }
   }
-  @media only screen and (max-width: 830px) {
+  @media only screen and (max-width: 730px) {
     .proyecto {
       width: 60vw;
     }
-    @media only screen and (max-width: 500px) {
+  }
+  @media only screen and (max-width: 500px) {
     .proyecto {
-      width: 80vw;
+      width: 90vw;
     }
   }
 </style>
