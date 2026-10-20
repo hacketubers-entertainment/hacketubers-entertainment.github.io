@@ -80,7 +80,7 @@ const pathname = Astro.url.pathname;
     position: fixed;
     left: 0;
     top: 0;
-    background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
+    background-color: rgba(255, 255, 255, 0.901); /* Slight transparency */
     backdrop-filter: blur(10px); /* Glassmorphism */
     box-shadow: var(--shadow-sm);
     /* Animation removed from default */
@@ -124,8 +124,9 @@ const pathname = Astro.url.pathname;
     padding: 8px 16px;
     border-radius: var(--border-radius-sm);
     transition: all 0.3s ease;
-    display: flex; /* Ensure text is centered */
+    display: flex;
     align-items: center;
+    text-shadow: 2px 2px 3px #c4c4c4, -2px -2px 2px #fff;
   }
 
   .apartados p {
