@@ -8,8 +8,8 @@ export const indexProjects = [
     img: "/images/banner pvz store.png",
   },
   {
-    href: "/PvzNews",
-    img: "/images/banner-pvz-news.webp",
+    href: "/bintok",
+    img: "/images/bintok/BinTok.png",
   },
 ];
 export const juegos = [
@@ -26,6 +26,10 @@ export const apps = [
   {
     href: "/pvzStore",
     img: "/images/banner pvz store.png",
+  },
+  {
+    href: "/bintok",
+    img: "/images/bintok/BinTok.png",
   },
 ];
 export const webs = [
@@ -62,6 +66,11 @@ export const allProjects = [
     img: "/images/Banner lemon clicker.jpg",
     tecnologias: ["Godot Engine", "firebase"]
   },
+    {
+    href: "/bintok",
+    img: "/images/bintok/BinTok.png",
+    tecnologias:["Kotlin"]
+  },
 ];
 
 export const projectsEduardo = [
@@ -72,5 +81,9 @@ export const projectsEduardo = [
   {
     href: "https://lelestudios.itch.io/lele-armor",
     img: "/images/Eduardo/LeleArmor.png",
+  },
+  {
+    href: "https://lelestudios.itch.io/lele-armor-2",
+    img: "/images/Eduardo/LeleArmor2.png",
   },
 ];

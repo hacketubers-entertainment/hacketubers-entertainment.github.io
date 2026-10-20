@@ -1,0 +1,249 @@
+---
+import Layout from "../layouts/Layout.astro";
+import GooglePlay from "../components/buttons/GooglePlay.astro";
+import Carrusel from "../components/carruseles/carrusel.astro";
+import CharacteristicCard from "../components/CharacteristicCard.astro";
+const imagenesCarrusel = [
+  {
+    src: "/images/bintok/1.png",
+    tipo: "imagen_vertical",
+  },
+  {
+    src: "/images/bintok/2.png",
+    tipo: "imagen_vertical",
+  },
+  {
+    src: "/images/bintok/3.png",
+    tipo: "imagen_vertical",
+  },
+  {
+    src: "/images/bintok/4.png",
+    tipo: "imagen_vertical",
+  },
+  {
+    src: "/images/bintok/5.png",
+    tipo: "imagen_vertical",
+  },
+];
+---
+
+<Layout>
+  <main>
+    <div class="contenedor_principal">
+      <div class="contInfo">
+        <h2 id="titulo_app">Bin Tok</h2>
+        <p id="subtitulo_app">
+          Optimiza tu almacenamiento eliminando videos viejos con un reproductor
+          de scroll vertical
+        </p>
+        <div id="googleplay_button">
+          <GooglePlay
+            Link="https://play.google.com/store/apps/details?id=com.hacketubers_entertainment.bintok"
+          />
+        </div>
+      </div>
+
+      <div id="img_info">
+        <img
+          id="imagen_principal"
+          src="/images/bintok/BintokIcon.png"
+          alt=""
+          srcset=""
+        />
+      </div>
+    </div>
+  </main>
+  <section>
+    <CharacteristicCard
+      title="Elimina videos basura de una manera sencilla"
+      description="Con Bintok puedes optimizar tu almacenamiento eliminando videos de una manera comoda haciendo un scroll verticar infinito. Una experiencia similar a tiktok."
+      image="/images/bintok/BintokRender.png"
+      imageAlt="Icono de compartir contenido"
+      imagePosition="right"
+    />
+
+
+    <Carrusel images={imagenesCarrusel} />
+
+    <div id="cont_botones_descarga">
+      <GooglePlay
+        Link="https://play.google.com/store/apps/details?id=com.hacketubers_entertainment.bintok"
+      />
+    </div>
+  </section>
+  <a
+    href="/politicas/politicasPeaStore"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="linkPoliticas">politicas de privacidad</a
+  >
+  <a
+    href="/politicas/estandaresPeaStore"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="linkPoliticas"
+    >estandares de Seguridad y Protección Infantil (CSAE)
+  </a>
+</Layout>
+<style>
+  @font-face {
+    font-family: "milky_mania";
+    src: url("/src/fonts/MilkyMania.ttf");
+  }
+  @font-face {
+    font-family: "Black-Regular";
+    src: url("/src/fonts/Black-Regular.ttf");
+  }
+
+  main {
+    box-shadow: inset 10 10 100px #000000;
+    background-image: url("/images/bintok/background.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100vh;
+    border-radius: 40px;
+  }
+  .contenedor_principal {
+    background-color: #00000048;
+    display: flex;
+    flex-direction: row;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    gap: 20px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+  }
+  #cont_itulo_juego {
+    display: flex;
+  }
+  .contInfo{
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  #titulo_app {
+    font-size: 5rem;
+    font-family: "Black-Regular", sans-serif;
+    color: rgb(255, 255, 255);
+    filter: drop-shadow(10, 10, #000);
+    text-align: left;
+    white-space: pre-line;
+    margin: 0px;
+    margin-top: 80px;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: rgb(255, 255, 255);
+  }
+  #subtitulo_app {
+    font-size: 1rem;
+    font-family: "Black-Regular", sans-serif;
+    color: rgb(255, 255, 255);
+    filter: drop-shadow(10, 10, #000);
+    text-align: left;
+    white-space: pre-line;
+    margin: 0px;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: rgb(255, 255, 255);
+  }
+  #googleplay_button {
+    margin-top: 30px;
+    border-radius: 10px;
+    color: rgb(70, 54, 40);
+    font-size: 18px;
+    width: 200px;
+    height: fit-content;
+  }
+
+  #img_info {
+    display: flex;
+  }
+  #imagen_principal {
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    align-self: flex-end;
+    cursor: pointer;
+    filter: drop-shadow(2px 2px 5px #000000);
+    width: 25%;
+    border-radius: 20%;
+    transform: translate(0%, -50%);
+  }
+
+  #cont_botones_descarga {
+    margin-top: 60px;
+    text-align: center;
+    font-size: large;
+  }
+  .linkPoliticas {
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    margin-top: 20px;
+    color: white;
+    font-size: 14px;
+  }
+  @media only screen and (min-width: 856px) and (max-width: 1050px) {
+    #titulo_app {
+      font-size: 3rem;
+    }
+    #subtitulo_app {
+      font-size: 1rem;
+    }
+  }
+
+  @media only screen and (min-width: 0px) and (max-width: 854px) {
+    .contInfo{
+      position: static;
+      display: flex;
+      flex-direction: column;
+      align-content: space-between;
+    }
+    .contenedor_principal {
+      position: static;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      text-align: center;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      gap: 10px;
+    }
+    #titulo_app {
+      font-size: 4rem;
+      text-align: center;
+      margin-top: 60px;
+      position: static;
+    }
+    #subtitulo_app {
+      font-size: 1rem;
+      text-align: center;
+      margin-top: 0px;
+      position: static;
+    }
+    #img_info {
+      display: block;
+    }
+    #imagen_principal {
+      position: static;
+      bottom: -100;
+      right: 0;
+      width: 20vh;
+      transform: translate(0%, 0%);
+    }
+    #googleplay_button {
+      position: static;
+      width: 100%;
+      margin: 0px;
+      margin-top: 5vh;
+      align-self: center;
+    }
+    #boton_playstore {
+      width: 70vw;
+    }
+  }
+</style>
