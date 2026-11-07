@@ -73,39 +73,27 @@ const { withBackground = false, backgroundImageUrl } = Astro.props;
     .footer-container {
         position: relative;
         width: 100%;
-        margin-top: 2rem; /* Spacing from previous content */
+        margin-top: 2rem;
         color: #333;
         background-color: transparent;
 
-        /* Apply the clip-path */
         clip-path: url(#footer-curve);
-        /* Fallback for older browsers? They just get a rect. */
-
-        /* Ensure the footer is tall enough for the curve */
-        padding-top: 4rem; /* Push content down below the curve dip */
+        padding-top: 4rem;
     }
 
     .footer-container.with-bg {
         color: white;
-        background-color: #1a1a1a; /* Dark background */
-        /* Optional: Add background image here if requested */
-        /* background-image: url('/path/to/image.jpg'); */
-        /* background-size: cover; */
+        background-color: #1a1a1a; 
     }
 
-    /* If no background is requested (transparent/white), we still need a color for the footer itself 
-     so the clip-path is visible against the body background. 
-     Wait, if withBackground is false, user said "solo sera en blanco".
-     So background-color: white.
-  */
     .footer-container:not(.with-bg) {
         background-color: rgba(
             255,
             255,
             255,
             0.8
-        ); /* Semi-transparent white or solid */
-        backdrop-filter: blur(10px); /* Glassmorphism effect */
+        );
+        backdrop-filter: blur(10px);
     }
 
     .footer-content {

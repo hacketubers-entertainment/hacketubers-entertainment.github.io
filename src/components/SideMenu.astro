@@ -20,11 +20,11 @@
     z-index: 999;
     width: 0vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5); /* Darker, simpler overlay */
+    background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(5px);
     transition:
       opacity 0.3s ease,
-      width 0s 0.3s; /* Delay width change to allow fade out */
+      width 0s 0.3s;
     position: fixed;
     top: 0;
     left: 0;
@@ -110,6 +110,5 @@
     }
   }
 
-  // Close menu when clicking outside
   document.getElementById("backgroudMenu")?.addEventListener("click", closeNav);
 </script>

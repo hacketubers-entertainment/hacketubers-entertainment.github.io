@@ -28,7 +28,6 @@ const pathname = Astro.url.pathname;
 </header>
 
 <script is:inline>
-  // Script para manejar la apertura del menú lateral
   const menuButton = document.getElementById("menu-button");
   if (menuButton) {
     menuButton.addEventListener("click", () => {
@@ -42,7 +41,6 @@ const pathname = Astro.url.pathname;
     });
   }
 
-  // Animation Logic
   document.addEventListener("DOMContentLoaded", () => {
     const header = document.querySelector("header");
     const isHome = window.location.pathname === "/";
@@ -50,7 +48,6 @@ const pathname = Astro.url.pathname;
     if (isHome && !sessionStorage.getItem("navbarAnimated")) {
       header.classList.add("animate-navbar");
       sessionStorage.setItem("navbarAnimated", "true");
-      // Ensure it stays visible after animation
       header.addEventListener("animationend", () => {
         header.classList.add("visible");
         header.classList.remove("animate-navbar");
@@ -63,16 +60,16 @@ const pathname = Astro.url.pathname;
 
 <style>
   :root {
-    --tiempocomponente: 1s; /* Reduced time for snappier feel */
+    --tiempocomponente: 1s;
   }
 
   header {
     align-self: center;
     display: flex;
     flex-direction: row;
-    justify-content: space-between; /* Better spacing */
+    justify-content: space-between;
     align-items: center;
-    z-index: 100; /* Increased z-index to be above everything */
+    z-index: 100;
     width: 100vw;
     max-width: 100%;
     height: 80px;
@@ -80,14 +77,13 @@ const pathname = Astro.url.pathname;
     position: fixed;
     left: 0;
     top: 0;
-    background-color: rgba(255, 255, 255, 0.901); /* Slight transparency */
-    backdrop-filter: blur(10px); /* Glassmorphism */
+    background-color: rgba(255, 255, 255, 0.901);
+    backdrop-filter: blur(10px);
     box-shadow: var(--shadow-sm);
-    /* Animation removed from default */
-    opacity: 0; /* Start hidden to avoid flash if animating, script will handle visibility */
-    transform: translateY(-100%); /* Start hidden */
+    opacity: 0;
+    transform: translateY(-100%);
     transition: all 0.3s ease;
-    padding: 0 20px; /* Add padding */
+    padding: 0 20px;
     box-sizing: border-box;
   }
 
@@ -134,14 +130,14 @@ const pathname = Astro.url.pathname;
   }
 
   .apartados:hover {
-    background-color: rgba(128, 0, 207, 0.1); /* Light accent color */
+    background-color: rgba(128, 0, 207, 0.1);
     color: var(--color-accent);
     transform: translateY(-2px);
   }
 
   .btn_menu {
     cursor: pointer;
-    display: none; /* Hidden by default on desktop */
+    display: none;
     transition: transform 0.3s ease;
   }
 
@@ -166,11 +162,11 @@ const pathname = Astro.url.pathname;
     }
 
     .SeccionesNavbar {
-      display: none; /* Hide links on mobile */
+      display: none;
     }
 
     .btn_menu {
-      display: block; /* Show menu button on mobile */
+      display: block;
     }
 
     h1 {

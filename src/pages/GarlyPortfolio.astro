@@ -42,7 +42,6 @@ import ContProyects from "../components/containers/ContProyectsPortfolio.astro";
         >
       </div>
     </div>
-    <!-- Wrappers for parallax, Images for animation -->
   </main>
   <div class="sticker-wrapper tocar" data-speed="0.05">
     <img
@@ -107,7 +106,6 @@ import ContProyects from "../components/containers/ContProyectsPortfolio.astro";
 </Layout>
 
 <script>
-  // Cursor Glow Effect
   const initCursorGlow = () => {
     const cursorGlow = document.querySelector(".cursor-glow") as HTMLElement;
     if (!cursorGlow) return;
@@ -123,7 +121,6 @@ import ContProyects from "../components/containers/ContProyectsPortfolio.astro";
     });
 
     const animateGlow = () => {
-      // Smooth interpolation for following effect
       glowX += (mouseX - glowX) * 0.1;
       glowY += (mouseY - glowY) * 0.1;
 
@@ -136,24 +133,20 @@ import ContProyects from "../components/containers/ContProyectsPortfolio.astro";
     animateGlow();
   };
 
-  // Smooth Parallax Effect
   const initParallax = () => {
     const wrappers = document.querySelectorAll(".sticker-wrapper");
     let currentScroll = window.scrollY;
     let targetScroll = window.scrollY;
 
-    // Linear interpolation function
     const lerp = (start: number, end: number, factor: number) => {
       return start + (end - start) * factor;
     };
 
     const update = () => {
-      // Smoothly interpolate current scroll towards target scroll
       currentScroll = lerp(currentScroll, targetScroll, 0.1);
 
       wrappers.forEach((wrapper) => {
         const speed = parseFloat(wrapper.getAttribute("data-speed") || "0.1");
-        // Move stickers based on smoothed scroll
         (wrapper as HTMLElement).style.transform =
           `translateY(${currentScroll * speed}px)`;
       });
@@ -166,13 +159,11 @@ import ContProyects from "../components/containers/ContProyectsPortfolio.astro";
     };
 
     window.addEventListener("scroll", handleScroll);
-    update(); // Start the animation loop
+    update();
   };
 
-  // Run on load and after view transitions
   document.addEventListener("astro:page-load", initParallax);
   document.addEventListener("astro:page-load", initCursorGlow);
-  // Fallback for initial load
   initParallax();
   initCursorGlow();
 </script>
@@ -192,17 +183,16 @@ import ContProyects from "../components/containers/ContProyectsPortfolio.astro";
   }
 
   main {
-    padding-top: 120px; /* Increased padding for navbar */
+    padding-top: 120px;
     padding-bottom: 50px;
-    min-height: 70vh; /* Fallback */
-    min-height: 70dvh; /* Dynamic viewport height */
+    min-height: 70vh;
+    min-height: 70dvh;
     position: relative;
-    overflow: hidden; /* Fix: Clip stickers that go out of bounds */
-    display: flex; /* Fix: Use Flexbox for better layout */
+    overflow: hidden;
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    /* gap: 4rem; Removed to allow overlap */
   }
 
   .imagenPerfil {
@@ -211,7 +201,6 @@ import ContProyects from "../components/containers/ContProyectsPortfolio.astro";
     height: 250px;
     border-radius: 50%;
     background-color: rgb(195, 132, 255);
-    /* Removed absolute positioning magic numbers */
     z-index: 3;
     animation: contenidoAparece 1s cubic-bezier(0.2, 0.9, 0.3, 1) both;
     animation-iteration-count: 1;
@@ -222,10 +211,9 @@ import ContProyects from "../components/containers/ContProyectsPortfolio.astro";
   .descripcionPerfil {
     background-color: rgba(255, 255, 255, 0.74);
     backdrop-filter: blur(10px);
-    /* Removed absolute positioning magic numbers */
     margin: 0;
-    margin-left: -15px; /* Overlap with image on desktop */
-    font-size: 1rem; /* Adjusted base font size */
+    margin-left: -15px;
+    font-size: 1rem;
     padding: 2rem;
     box-shadow:
       11px 11px 22px #0000002d,
@@ -248,7 +236,7 @@ import ContProyects from "../components/containers/ContProyectsPortfolio.astro";
   .contactoProfecional {
     margin-top: 1rem;
     display: flex;
-    justify-content: flex-end; /* Align icons to right */
+    justify-content: flex-end;
     gap: 1rem;
   }
 
@@ -275,12 +263,11 @@ import ContProyects from "../components/containers/ContProyectsPortfolio.astro";
     transform: scale(1.1);
   }
 
-  /* WRAPPER STYLES (Positioning & Parallax) */
   .sticker-wrapper {
     position: absolute;
-    z-index: 0; /* Behind content (z-index 3 & 4) */
+    z-index: 0;
     will-change: transform;
-    pointer-events: none; /* Prevent stickers from blocking clicks */
+    pointer-events: none;
   }
 
   .tocar {
@@ -296,16 +283,14 @@ import ContProyects from "../components/containers/ContProyectsPortfolio.astro";
     bottom: 10%;
   }
 
-  /* IMAGE STYLES (Appearance & Entry Animation) */
   .stiker {
-    width: 12vw; /* Slightly smaller */
+    width: 12vw;
     min-width: 80px;
     max-width: 150px;
     opacity: 0;
     animation: StikerAparece 1s cubic-bezier(0.2, 0.9, 0.3, 1) both;
   }
 
-  /* Stagger animations */
   .tocar .stiker {
     animation-delay: 0ms;
   }
@@ -338,7 +323,6 @@ import ContProyects from "../components/containers/ContProyectsPortfolio.astro";
     }
   }
 
-  /* Skills Section Styles */
   .skills-section {
     padding: 2rem 0;
     max-width: 1200px;
@@ -373,7 +357,6 @@ import ContProyects from "../components/containers/ContProyectsPortfolio.astro";
     box-shadow: var(--shadow-md);
   }
 
-  /* Contact Section Styles */
   .contact-section {
     padding: 4rem 0;
     text-align: center;
@@ -420,7 +403,6 @@ import ContProyects from "../components/containers/ContProyectsPortfolio.astro";
 
   @media screen and (max-width: 1000px) {
     main {
-      /* gap: 2rem; Removed */
     }
     .descripcionPerfil {
       width: 80vw;
@@ -430,24 +412,22 @@ import ContProyects from "../components/containers/ContProyectsPortfolio.astro";
     main {
       flex-direction: column;
       padding-top: 100px;
-      /* gap: 2rem; Removed */
     }
     .imagenPerfil {
       width: 200px;
       height: 200px;
     }
     .descripcionPerfil {
-      width: 90%; /* Changed from 90vw to 90% */
+      width: 90%;
       padding: 1.5rem;
       font-size: 1rem;
-      margin-left: 0; /* Reset horizontal margin */
-      margin-top: -15px; /* Overlap vertically on mobile */
+      margin-left: 0;
+      margin-top: -15px;
     }
 
-    /* Update mobile styles for wrappers/images */
     .stiker {
       width: 80px;
-      opacity: 0.6; /* More transparent on mobile */
+      opacity: 0.6;
     }
     .tocar {
       top: 5%;
@@ -465,7 +445,7 @@ import ContProyects from "../components/containers/ContProyectsPortfolio.astro";
 
     .skills-grid {
       padding: 2rem 20px;
-      grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+      grid-template-columns: repeat(2, 1fr);
     }
 
     .contact-container {
